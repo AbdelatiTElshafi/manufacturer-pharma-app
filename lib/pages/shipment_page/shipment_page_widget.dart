@@ -154,11 +154,14 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                           onChanged: (val) async {
                                             safeSetState(() => _model
                                                 .ordersDropDownValue = val);
+                                            _model.loadingisvisable = false;
+                                            safeSetState(() {});
                                             await _model.getOrderDetalis(
                                               context,
                                               orderNumber:
                                                   _model.ordersDropDownValue,
                                             );
+                                            safeSetState(() {});
                                           },
                                           height: 50.0,
                                           searchHintTextStyle: TextStyle(

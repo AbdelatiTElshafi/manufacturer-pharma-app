@@ -54,7 +54,7 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
   }
 
   /// Action blocks.
-  Future getOrderDetalis(
+  Future<bool?> getOrderDetalis(
     BuildContext context, {
     String? orderNumber,
   }) async {
@@ -66,18 +66,19 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
     );
 
     if ((getOrderDetailsResp.succeeded ?? true)) {
-      orderno = OrdersAPIsGroup.getOrderDetailsCall.orderNo(
-        (getOrderDetailsResp.jsonBody ?? ''),
-      );
-      ssccState = OrdersAPIsGroup.getOrderDetailsCall.sscc(
-        (getOrderDetailsResp.jsonBody ?? ''),
-      );
+      loadingisvisable = false;
+      orderno = orderNumber;
+      ssccState = orderNumber;
       bath = '000';
       customers = OrdersAPIsGroup.getOrderDetailsCall.customer(
         (getOrderDetailsResp.jsonBody ?? ''),
       );
       totolitems = '110';
+    } else {
+      loadingisvisable = false;
     }
+
     loadingisvisable = false;
+    return true;
   }
 }

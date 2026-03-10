@@ -65,7 +65,7 @@ class CancelShipmentPageModel
   }
 
   /// Action blocks.
-  Future getOrderDetails(
+  Future<bool?> getOrderDetails(
     BuildContext context, {
     String? orderNumber,
   }) async {
@@ -77,13 +77,16 @@ class CancelShipmentPageModel
     );
 
     if ((getOrderDetailsResp.succeeded ?? true)) {
-      orderno = OrdersAPIsGroup.getOrderDetailsCall.orderNo(
-        (getOrderDetailsResp.jsonBody ?? ''),
-      );
+      loadingisvisable = false;
+      orderno = orderNumber;
       ssccState = OrdersAPIsGroup.getOrderDetailsCall.sscc(
         (getOrderDetailsResp.jsonBody ?? ''),
       );
+    } else {
+      loadingisvisable = false;
     }
+
     loadingisvisable = false;
+    return false;
   }
 }

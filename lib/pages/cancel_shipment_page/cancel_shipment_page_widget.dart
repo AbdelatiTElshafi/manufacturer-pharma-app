@@ -183,11 +183,14 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                           onChanged: (val) async {
                                             safeSetState(() => _model
                                                 .ordersDropDownValue = val);
+                                            _model.loadingisvisable = false;
+                                            safeSetState(() {});
                                             await _model.getOrderDetails(
                                               context,
                                               orderNumber:
                                                   _model.ordersDropDownValue,
                                             );
+                                            safeSetState(() {});
                                           },
                                           height: 50.0,
                                           searchHintTextStyle: TextStyle(
@@ -421,10 +424,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                valueOrDefault<String>(
-                                                  _model.orderno,
-                                                  '123',
-                                                ),
+                                                _model.orderno!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -485,10 +485,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                valueOrDefault<String>(
-                                                  _model.shipmentScanedsscc,
-                                                  '#####',
-                                                ),
+                                                _model.ssccState!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -549,10 +546,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                valueOrDefault<String>(
-                                                  _model.batch,
-                                                  'batch',
-                                                ),
+                                                _model.batch!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -613,10 +607,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                valueOrDefault<String>(
-                                                  _model.customers,
-                                                  'customer',
-                                                ),
+                                                _model.customers!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -677,10 +668,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                valueOrDefault<String>(
-                                                  _model.totolitems?.toString(),
-                                                  'totalitem',
-                                                ),
+                                                _model.totolitems!.toString(),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -917,7 +905,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                 ),
               ],
             ),
-            if (_model.loadingisvisable)
+            if (valueOrDefault<bool>(
+              _model.loadingisvisable,
+              false,
+            ))
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: wrapWithModel(
