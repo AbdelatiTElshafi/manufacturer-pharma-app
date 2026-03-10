@@ -7,7 +7,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:manufacturer_pharma_app_9_3_2026_abdelati/main.dart';
+import 'package:manufacturer_pharma_app/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

@@ -17,23 +17,35 @@ class CancelShipmentPageModel
 
   String? ssccState;
 
-  String? bath;
+  String? batch;
 
   String? customers;
 
-  String? totolitems;
+  int? totolitems;
 
   bool loadingisvisable = false;
 
+  List<String> shippedorders = [];
+  void addToShippedorders(String item) => shippedorders.add(item);
+  void removeFromShippedorders(String item) => shippedorders.remove(item);
+  void removeAtIndexFromShippedorders(int index) =>
+      shippedorders.removeAt(index);
+  void insertAtIndexInShippedorders(int index, String item) =>
+      shippedorders.insert(index, item);
+  void updateShippedordersAtIndex(int index, Function(String) updateFn) =>
+      shippedorders[index] = updateFn(shippedorders[index]);
+
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (GetOrderDetails)] action in CancelShipmentPage widget.
+  // Stores action output result for [Backend Call - API (GetOrderByUser)] action in CancelShipmentPage widget.
   ApiCallResponse? getOrderDetailsResp;
   // Model for Header component.
   late HeaderModel headerModel;
   // State field(s) for OrdersDropDown widget.
   String? ordersDropDownValue;
   FormFieldController<String>? ordersDropDownValueController;
+  // Stores action output result for [Backend Call - API (GetOrderDetails)] action in OrdersDropDown widget.
+  ApiCallResponse? getOrderDetailsResponse;
   var sscc = '';
   // Model for Loading component.
   late LoadingModel loadingModel;

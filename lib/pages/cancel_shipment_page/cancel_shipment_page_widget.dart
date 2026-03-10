@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/cancelation_widget.dart';
 import '/components/header/header_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cancel_shipment_page_model.dart';
 export 'cancel_shipment_page_model.dart';
 
@@ -56,22 +58,18 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
       _model.loadingisvisable = true;
       safeSetState(() {});
       _model.getOrderDetailsResp =
-          await OrdersAPIsGroup.getOrderDetailsCall.call(
-        orderNO: _model.ordersDropDownValue,
+          await OrdersAPIsGroup.getOrderByUserCall.call(
+        username: FFAppState().userName,
+        orderStatus: 'completed',
       );
 
       if ((_model.getOrderDetailsResp?.succeeded ?? true)) {
-        _model.orderno = OrdersAPIsGroup.getOrderDetailsCall.orderNo(
-          (_model.getOrderDetailsResp?.jsonBody ?? ''),
-        );
-        _model.ssccState = OrdersAPIsGroup.getOrderDetailsCall.sscc(
-          (_model.getOrderDetailsResp?.jsonBody ?? ''),
-        );
-        _model.bath = '000';
-        _model.customers = OrdersAPIsGroup.getOrderDetailsCall.customer(
-          (_model.getOrderDetailsResp?.jsonBody ?? ''),
-        );
-        _model.totolitems = '129';
+        _model.shippedorders = OrdersAPIsGroup.getOrderByUserCall
+            .order(
+              (_model.getOrderDetailsResp?.jsonBody ?? ''),
+            )!
+            .toList()
+            .cast<String>();
         safeSetState(() {});
       }
       _model.loadingisvisable = false;
@@ -88,6 +86,8 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -108,60 +108,64 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
         ),
         body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
-                    child: wrapWithModel(
-                      model: _model.headerModel,
-                      updateCallback: () => safeSetState(() {}),
-                      child: HeaderWidget(
-                        pagename: 'Cancel',
-                        showMenu: () async {
-                          scaffoldKey.currentState!.openDrawer();
-                        },
-                      ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.0, -1.0),
+                  child: wrapWithModel(
+                    model: _model.headerModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: HeaderWidget(
+                      pagename: 'Cancel',
+                      showMenu: () async {
+                        scaffoldKey.currentState!.openDrawer();
+                      },
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 10.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Column(
+                ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 10.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 5.0, 0.0, 0.0),
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Select Shipment to Cancel',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
+                                Align(
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Select Shipment to Cancel',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFFB22222),
+                                            fontSize: 17.0,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFB22222),
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
+                                    ),
                                   ),
                                 ),
                                 Row(
@@ -175,13 +179,53 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                           controller: _model
                                                   .ordersDropDownValueController ??=
                                               FormFieldController<String>(null),
-                                          options: [
-                                            'Order #12345 - ABC Corp',
-                                            'Order #12346 - XYZ Ltd',
-                                            'Order #12347 - DEF Inc'
-                                          ],
-                                          onChanged: (val) => safeSetState(() =>
-                                              _model.ordersDropDownValue = val),
+                                          options: widget.shipedorders!,
+                                          onChanged: (val) async {
+                                            safeSetState(() => _model
+                                                .ordersDropDownValue = val);
+                                            _model.loadingisvisable = true;
+                                            safeSetState(() {});
+                                            _model.getOrderDetailsResponse =
+                                                await OrdersAPIsGroup
+                                                    .getOrderDetailsCall
+                                                    .call(
+                                              orderNO:
+                                                  _model.ordersDropDownValue,
+                                            );
+
+                                            if ((_model.getOrderDetailsResponse
+                                                    ?.succeeded ??
+                                                true)) {
+                                              _model.orderno = OrdersAPIsGroup
+                                                  .getOrderDetailsCall
+                                                  .orderNo(
+                                                (_model.getOrderDetailsResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              );
+                                              _model.ssccState = OrdersAPIsGroup
+                                                  .getOrderDetailsCall
+                                                  .sscc(
+                                                (_model.getOrderDetailsResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              );
+                                              _model.batch = '456';
+                                              _model.customers = OrdersAPIsGroup
+                                                  .getOrderDetailsCall
+                                                  .customer(
+                                                (_model.getOrderDetailsResponse
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              );
+                                              _model.totolitems = 123;
+                                              safeSetState(() {});
+                                            }
+                                            _model.loadingisvisable = false;
+                                            safeSetState(() {});
+
+                                            safeSetState(() {});
+                                          },
                                           height: 50.0,
                                           searchHintTextStyle: TextStyle(
                                             color: Color(0xFF2E3192),
@@ -230,7 +274,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                           borderRadius: 12.0,
                                           margin:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                                  10.0, 0.0, 5.0, 0.0),
                                           hidesUnderline: true,
                                           isOverButton: true,
                                           isSearchable: true,
@@ -270,7 +314,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                   16.0, 0.0, 16.0, 0.0),
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 8.0, 0.0),
+                                                  0.0, 0.0, 6.0, 0.0),
                                           iconColor: Colors.white,
                                           color: Color(0xFF2E3192),
                                           textStyle: FlutterFlowTheme.of(
@@ -307,9 +351,16 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                 ),
                               ].divide(SizedBox(height: 12.0)),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 0.0, 5.0, 0.0),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 10.0, 8.0, 0.0),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
                               child: Container(
                                 width: double.infinity,
                                 decoration: BoxDecoration(
@@ -325,6 +376,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                     )
                                   ],
                                   borderRadius: BorderRadius.circular(12.0),
+                                  border: Border.all(
+                                    color: Color(0xFFB2B2B2),
+                                    width: 1.0,
+                                  ),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(16.0),
@@ -333,27 +388,38 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Order Details',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF333333),
-                                              fontSize: 18.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.bold,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .fontStyle,
-                                            ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, -1.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 10.0),
+                                          child: Text(
+                                            'Order Details',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Color(0xFF21177E),
+                                                  fontSize: 22.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ),
                                       ),
                                       Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -371,7 +437,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w600,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -382,7 +448,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -391,25 +457,28 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                '1234567890123456',
+                                                valueOrDefault<String>(
+                                                  _model.orderno,
+                                                  '123',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.bold,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF666666),
-                                                      fontSize: 16.0,
+                                                      color: Color(0xFF2B2A2A),
+                                                      fontSize: 15.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.bold,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -432,7 +501,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w600,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -443,7 +512,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -462,18 +531,18 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.bold,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF666666),
-                                                      fontSize: 16.0,
+                                                      color: Color(0xFF2B2A2A),
+                                                      fontSize: 15.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.bold,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -496,7 +565,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w600,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -507,7 +576,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -516,25 +585,28 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                'BATCH-2024-001',
+                                                valueOrDefault<String>(
+                                                  _model.batch,
+                                                  'batch',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.bold,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF666666),
-                                                      fontSize: 16.0,
+                                                      color: Color(0xFF2B2A2A),
+                                                      fontSize: 15.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.bold,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -557,7 +629,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w600,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -568,7 +640,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -577,25 +649,28 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                'ABC Corporation',
+                                                valueOrDefault<String>(
+                                                  _model.customers,
+                                                  'customer',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.bold,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF666666),
-                                                      fontSize: 16.0,
+                                                      color: Color(0xFF2B2A2A),
+                                                      fontSize: 15.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.bold,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -618,7 +693,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.bold,
+                                                            FontWeight.w600,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -629,7 +704,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                          FontWeight.w600,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -638,25 +713,28 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                '125 units',
+                                                valueOrDefault<String>(
+                                                  _model.totolitems?.toString(),
+                                                  'totalitem',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
                                                     .override(
                                                       font: GoogleFonts.inter(
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.bold,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                                      color: Color(0xFF666666),
-                                                      fontSize: 16.0,
+                                                      color: Color(0xFF2B2A2A),
+                                                      fontSize: 15.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
-                                                          FontWeight.normal,
+                                                          FontWeight.bold,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -673,44 +751,32 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 16.0, 5.0, 16.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFFFF5F5),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  border: Border.all(
-                                    color: Color(0xFFB22222),
-                                    width: 1.0,
-                                  ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 16.0, 5.0, 16.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFFFF5F5),
+                                borderRadius: BorderRadius.circular(12.0),
+                                border: Border.all(
+                                  color: Color(0xFFB22222),
+                                  width: 1.0,
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(12.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        '⚠️',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF1F1B1B),
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '⚠️',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            font: GoogleFonts.interTight(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .titleLarge
@@ -720,31 +786,31 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                       .titleLarge
                                                       .fontStyle,
                                             ),
-                                      ),
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Warning',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleSmall
-                                                  .override(
-                                                    font:
-                                                        GoogleFonts.interTight(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontStyle,
-                                                    ),
-                                                    color: Color(0xFFB22222),
-                                                    letterSpacing: 0.0,
+                                            color: Color(0xFF1F1B1B),
+                                            fontSize: 20.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Warning',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleSmall
+                                                .override(
+                                                  font: GoogleFonts.interTight(
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
@@ -752,17 +818,41 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                             .titleSmall
                                                             .fontStyle,
                                                   ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 4.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Are you sure you want to cancel this shipment? This action cannot be undone.',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
+                                                  color: Color(0xFFB22222),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 4.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Are you sure you want to cancel this shipment? This action cannot be undone.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFFB22222),
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -773,66 +863,55 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
+                                                        lineHeight: 1.4,
                                                       ),
-                                                      color: Color(0xFFB22222),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                      lineHeight: 1.4,
-                                                    ),
-                                              ),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ].divide(SizedBox(width: 12.0)),
-                                  ),
+                                    ),
+                                  ].divide(SizedBox(width: 12.0)),
                                 ),
                               ),
                             ),
-                          ]
-                              .divide(SizedBox(height: 24.0))
-                              .addToStart(SizedBox(height: 24.0))
-                              .addToEnd(SizedBox(height: 24.0)),
-                        ),
+                          ),
+                        ]
+                            .divide(SizedBox(height: 24.0))
+                            .addToStart(SizedBox(height: 24.0))
+                            .addToEnd(SizedBox(height: 24.0)),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
-                    child: Container(
-                      child: FFButtonWidget(
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
+                  child: Container(
+                    child: Builder(
+                      builder: (context) => FFButtonWidget(
                         onPressed: () async {
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('Close'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('Cancel'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('Confirm'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ) ??
-                              false;
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: AlignmentDirectional(0.0, 1.0)
+                                    .resolve(Directionality.of(context)),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    FocusScope.of(dialogContext).unfocus();
+                                    FocusManager.instance.primaryFocus
+                                        ?.unfocus();
+                                  },
+                                  child: CancelationWidget(
+                                    order: _model.ordersDropDownValue!,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
                         },
                         text: 'Cancel Shipment',
                         icon: Icon(
@@ -871,8 +950,8 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             if (_model.loadingisvisable)
               Align(

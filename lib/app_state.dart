@@ -26,10 +26,10 @@ class FFAppState extends ChangeNotifier {
     _mainpageloadingvisible = value;
   }
 
-  String _usernmame = '';
-  String get usernmame => _usernmame;
-  set usernmame(String value) {
-    _usernmame = value;
+  String _userName = '';
+  String get userName => _userName;
+  set userName(String value) {
+    _userName = value;
   }
 
   String _userRole = '';

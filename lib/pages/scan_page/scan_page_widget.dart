@@ -104,142 +104,137 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
         ),
         body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  wrapWithModel(
-                    model: _model.headerModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: HeaderWidget(
-                      pagename: 'Scan & Validation',
-                      showMenu: () async {
-                        scaffoldKey.currentState!.openDrawer();
-                      },
-                    ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                wrapWithModel(
+                  model: _model.headerModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: HeaderWidget(
+                    pagename: 'Scan & Verify',
+                    showMenu: () async {
+                      scaffoldKey.currentState!.openDrawer();
+                    },
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 120.0,
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: wrapWithModel(
-                            model: _model.orderDataModel,
-                            updateCallback: () => safeSetState(() {}),
-                            child: OrderDataWidget(
-                              orderNo: widget.orderNO!,
-                              batchNo: widget.batchNo!,
-                              customer: widget.customer!,
-                              quantity: widget.quantity!,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 120.0,
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding: EdgeInsets.all(5.0),
                         child: wrapWithModel(
-                          model: _model.testModel,
+                          model: _model.orderDataModel,
                           updateCallback: () => safeSetState(() {}),
-                          child: TestWidget(
-                            totalPallets: 0,
-                            totalCartons: 0,
-                            totalItems: 0,
+                          child: OrderDataWidget(
+                            orderNo: widget.orderNO!,
+                            batchNo: widget.batchNo!,
+                            customer: widget.customer!,
+                            quantity: widget.quantity!,
                           ),
                         ),
                       ),
-                      Divider(
-                        thickness: 2.0,
-                        color: Color(0xFFE0E3E7),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                      child: wrapWithModel(
+                        model: _model.testModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: TestWidget(
+                          totalPallets: 0,
+                          totalCartons: 0,
+                          totalItems: 0,
+                        ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 160.0,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 8.0,
-                                color: Color(0x1A000000),
-                                offset: Offset(
-                                  0.0,
-                                  2.0,
-                                ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final itemsNo =
-                                          _model.scannedCodes.toList();
+                    ),
+                    Divider(
+                      thickness: 2.0,
+                      color: Color(0xFFE0E3E7),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 160.0,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 8.0,
+                              color: Color(0x1A000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final itemsNo =
+                                        _model.scannedCodes.toList();
 
-                                      return ListView.separated(
-                                        padding: EdgeInsets.zero,
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: itemsNo.length,
-                                        separatorBuilder: (_, __) =>
-                                            SizedBox(height: 2.0),
-                                        itemBuilder: (context, itemsNoIndex) {
-                                          final itemsNoItem =
-                                              itemsNo[itemsNoIndex];
-                                          return wrapWithModel(
-                                            model:
-                                                _model.sSCCCardModels.getModel(
-                                              itemsNoItem,
-                                              itemsNoIndex,
+                                    return ListView.separated(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: itemsNo.length,
+                                      separatorBuilder: (_, __) =>
+                                          SizedBox(height: 2.0),
+                                      itemBuilder: (context, itemsNoIndex) {
+                                        final itemsNoItem =
+                                            itemsNo[itemsNoIndex];
+                                        return wrapWithModel(
+                                          model: _model.sSCCCardModels.getModel(
+                                            itemsNoItem,
+                                            itemsNoIndex,
+                                          ),
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: SSCCCardWidget(
+                                            key: Key(
+                                              'Keyy74_${itemsNoItem}',
                                             ),
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            child: SSCCCardWidget(
-                                              key: Key(
-                                                'Keyy74_${itemsNoItem}',
-                                              ),
-                                              sscc: _model.scannedCodes
-                                                  .elementAtOrNull(
-                                                      itemsNoIndex)!,
-                                              itemcount: 20,
-                                              serialtype: '0',
-                                              palletcount: 0,
-                                              cartooncount: 0,
-                                              delete: () async {
-                                                _model.removeFromScannedCodes(
-                                                    itemsNoItem);
-                                                safeSetState(() {});
-                                              },
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                            sscc: _model.scannedCodes
+                                                .elementAtOrNull(itemsNoIndex)!,
+                                            itemcount: 20,
+                                            serialtype: '0',
+                                            palletcount: 0,
+                                            cartooncount: 0,
+                                            delete: () async {
+                                              _model.removeFromScannedCodes(
+                                                  itemsNoItem);
+                                              safeSetState(() {});
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
             if (_model.loadingIsVisable)
               wrapWithModel(

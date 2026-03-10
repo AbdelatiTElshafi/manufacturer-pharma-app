@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'header_model.dart';
@@ -76,9 +77,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       children: [
         Container(
           width: double.infinity,
-          height: 123.6,
+          height: 100.0,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color(0xFF261D66),
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,
@@ -91,8 +92,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               )
             ],
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(12.0),
-              bottomRight: Radius.circular(12.0),
+              bottomLeft: Radius.circular(0.0),
+              bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(0.0),
               topRight: Radius.circular(0.0),
             ),
@@ -106,7 +107,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,24 +116,27 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 20.0,
-                              borderWidth: 1.0,
-                              buttonSize: 40.0,
-                              fillColor: Color(0xFFF5F6FA),
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: Color(0xFF323394),
-                                size: 20.0,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 5.0, 10.0),
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor: Color(0x00F5F6FA),
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                  size: 33.0,
+                                ),
+                                onPressed: () async {
+                                  context.safePop();
+                                },
                               ),
-                              onPressed: () async {
-                                context.safePop();
-                              },
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 0.0, 0.0),
+                                  15.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment:
@@ -147,16 +151,16 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.interTight(
-                                              fontWeight: FontWeight.bold,
+                                              fontWeight: FontWeight.w500,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF323394),
-                                            fontSize: 20.0,
+                                            color: Colors.white,
+                                            fontSize: 22.0,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w500,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium
@@ -166,27 +170,33 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
+                                        0.0, 5.0, 0.0, 0.0),
                                     child: Text(
-                                      'manufacturer Operations',
+                                      'Manufacturer Operations',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodyLarge
                                           .override(
                                             font: GoogleFonts.inter(
-                                              fontWeight: FontWeight.w500,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodyLarge
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF8181BC),
-                                            fontSize: 12.0,
+                                            color: Colors.white,
+                                            fontSize: 12.3,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium
+                                                    .bodyLarge
                                                     .fontStyle,
                                           ),
                                     ),
@@ -196,26 +206,45 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                             ),
                           ],
                         ),
-                        Text(
-                          valueOrDefault<String>(
+                        FFButtonWidget(
+                          onPressed: () {
+                            print('Button pressed ...');
+                          },
+                          text: valueOrDefault<String>(
                             widget.pagename,
                             'Page#',
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFFF15B29),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.bold,
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0x004B39EF),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
+                                  color: Color(0xFFF15B29),
+                                  fontSize: 13.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: Color(0xFFF15B29),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
                         ),
                       ],
                     ),

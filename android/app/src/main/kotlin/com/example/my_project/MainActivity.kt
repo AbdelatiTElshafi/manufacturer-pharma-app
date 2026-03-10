@@ -1,4 +1,4 @@
-package com.mycompany.manufacturerpharmaapp932026abdelati
+package com.mycompany.manufacturerpharmaapp
 
 import io.flutter.embedding.android.FlutterActivity
 

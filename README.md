@@ -1,4 +1,4 @@
-# Manufacturer Pharma App 9-3-2026-Abdelati
+# Manufacturer Pharma App
 
 A new Flutter project.
 

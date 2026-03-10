@@ -150,57 +150,58 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
         ),
         body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  wrapWithModel(
-                    model: _model.headerModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: HeaderWidget(
-                      pagename: '#${widget.orderNO}',
-                      showMenu: () async {
-                        scaffoldKey.currentState!.openDrawer();
-                      },
-                    ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                wrapWithModel(
+                  model: _model.headerModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: HeaderWidget(
+                    pagename: '#${widget.orderNO}',
+                    showMenu: () async {
+                      scaffoldKey.currentState!.openDrawer();
+                    },
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 8.0,
-                                  color: Color(0x1A000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(5.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 8.0,
+                                color: Color(0x1A000000),
+                                offset: Offset(
+                                  0.0,
+                                  2.0,
+                                ),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 0.0, 0.0, 0.0),
+                                      child: Text(
                                         'Order #:',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -221,7 +222,11 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                      Text(
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Text(
                                         valueOrDefault<String>(
                                           widget.orderNO,
                                           '#123456',
@@ -251,14 +256,18 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 0.0, 0.0, 0.0),
+                                      child: Text(
                                         'Customer:',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -279,7 +288,11 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                      Text(
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Text(
                                         valueOrDefault<String>(
                                           _model.customer,
                                           'G',
@@ -309,14 +322,18 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 0.0, 0.0, 0.0),
+                                      child: Text(
                                         'Destination GLN:',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -337,7 +354,11 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                      Text(
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Text(
                                         valueOrDefault<String>(
                                           _model.gln,
                                           '0',
@@ -367,14 +388,18 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 0.0, 0.0, 0.0),
+                                      child: Text(
                                         'Order SSCC:',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -395,7 +420,11 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                      Text(
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 5.0, 0.0),
+                                      child: Text(
                                         valueOrDefault<String>(
                                           _model.sscc,
                                           'g',
@@ -425,17 +454,20 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ],
-                                  ),
-                                ].divide(SizedBox(height: 8.0)),
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ].divide(SizedBox(height: 8.0)),
                             ),
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, -1.0),
+                              child: Text(
                                 'Products in Order',
                                 style: FlutterFlowTheme.of(context)
                                     .titleMedium
@@ -447,6 +479,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                             .fontStyle,
                                       ),
                                       color: Color(0xFF323394),
+                                      fontSize: 20.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -454,69 +487,69 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                           .fontStyle,
                                     ),
                               ),
-                            ].divide(SizedBox(height: 16.0)),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                height: 385.58,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 8.0,
-                                      color: Color(0x1A000000),
-                                      offset: Offset(
-                                        0.0,
-                                        2.0,
-                                      ),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: Builder(
-                                  builder: (context) {
-                                    final itemNo = _model.products.toList();
-
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: itemNo.length,
-                                      itemBuilder: (context, itemNoIndex) {
-                                        final itemNoItem = itemNo[itemNoIndex];
-                                        return ProductDetailsCardWidget(
-                                          key: Key(
-                                              'Keyib2_${itemNoIndex}_of_${itemNo.length}'),
-                                          productname: _model.products
-                                              .elementAtOrNull(itemNoIndex)!,
-                                          gtin: _model.gtins
-                                              .elementAtOrNull(itemNoIndex)!,
-                                          requiredqty: _model.requiredqtys
-                                              .elementAtOrNull(itemNoIndex)!,
-                                          scannedqty: _model.scannedqtys
-                                              .elementAtOrNull(itemNoIndex)!,
-                                          orderNo: widget.orderNO!,
-                                          viewloadingcontrol: (view) async {
-                                            _model.loadingIsVisable = view;
-                                            safeSetState(() {});
-                                          },
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
+                            ),
+                          ].divide(SizedBox(height: 16.0)),
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              height: 385.58,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 8.0,
+                                    color: Color(0x1A000000),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
-                            ],
-                          ),
-                        ].divide(SizedBox(height: 24.0)),
-                      ),
+                              child: Builder(
+                                builder: (context) {
+                                  final itemNo = _model.products.toList();
+
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: itemNo.length,
+                                    itemBuilder: (context, itemNoIndex) {
+                                      final itemNoItem = itemNo[itemNoIndex];
+                                      return ProductDetailsCardWidget(
+                                        key: Key(
+                                            'Keyib2_${itemNoIndex}_of_${itemNo.length}'),
+                                        productname: _model.products
+                                            .elementAtOrNull(itemNoIndex)!,
+                                        gtin: _model.gtins
+                                            .elementAtOrNull(itemNoIndex)!,
+                                        requiredqty: _model.requiredqtys
+                                            .elementAtOrNull(itemNoIndex)!,
+                                        scannedqty: _model.scannedqtys
+                                            .elementAtOrNull(itemNoIndex)!,
+                                        orderNo: widget.orderNO!,
+                                        viewloadingcontrol: (view) async {
+                                          _model.loadingIsVisable = view;
+                                          safeSetState(() {});
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ].divide(SizedBox(height: 24.0)),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             if (_model.loadingIsVisable)
               wrapWithModel(

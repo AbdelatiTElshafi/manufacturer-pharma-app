@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'scan_product_page_model.dart';
 export 'scan_product_page_model.dart';
@@ -156,7 +157,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(5.0, 15.0, 5.0, 5.0),
                         child: wrapWithModel(
                           model: _model.testModel,
                           updateCallback: () => safeSetState(() {}),
@@ -251,99 +252,103 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await _model.backToOrderDetailesPage(
-                              context,
-                              orderno: widget.orderno,
-                              customer: '999',
-                            );
-                          },
-                          text: 'Cancel ',
-                          icon: Icon(
-                            Icons.cancel_rounded,
-                            size: 25.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 160.0,
-                            height: 50.0,
-                            padding: EdgeInsets.all(8.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFFD32F2F),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  font: GoogleFonts.interTight(
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await _model.backToOrderDetailesPage(
+                                context,
+                                orderno: widget.orderno,
+                                customer: '999',
+                              );
+                            },
+                            text: 'Cancel ',
+                            icon: Icon(
+                              Icons.cancel_rounded,
+                              size: 25.0,
+                            ),
+                            options: FFButtonOptions(
+                              width: 160.0,
+                              height: 50.0,
+                              padding: EdgeInsets.all(0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFFD32F2F),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(16.0),
                             ),
-                            borderRadius: BorderRadius.circular(16.0),
                           ),
                         ),
-                      ),
-                      Flexible(
-                        child: FFButtonWidget(
-                          onPressed: () {
-                            print('ConfirmButton pressed ...');
-                          },
-                          text: 'Update',
-                          icon: Icon(
-                            Icons.upload_sharp,
-                            size: 25.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 160.0,
-                            height: 50.0,
-                            padding: EdgeInsets.all(8.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFFD32F2F),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  font: GoogleFonts.interTight(
+                        Flexible(
+                          child: FFButtonWidget(
+                            onPressed: () {
+                              print('ConfirmButton pressed ...');
+                            },
+                            text: 'Update',
+                            icon: Icon(
+                              Icons.upload_sharp,
+                              size: 25.0,
+                            ),
+                            options: FFButtonOptions(
+                              width: 160.0,
+                              height: 50.0,
+                              padding: EdgeInsets.all(8.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF09057E),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    fontSize: 18.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  fontSize: 18.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .fontStyle,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(16.0),
                             ),
-                            borderRadius: BorderRadius.circular(16.0),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -362,40 +367,22 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                   updateCallback: () => safeSetState(() {}),
                   child: ScanningWidget(
                     qraction: (scanType) async {
-                      var confirmDialogResponse = await showDialog<bool>(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('hjk'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(
-                                        alertDialogContext, false),
-                                    child: Text('Cancel'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext, true),
-                                    child: Text('Confirm'),
-                                  ),
-                                ],
-                              );
-                            },
-                          ) ??
-                          false;
-                      _model.scannedCode = await _model.checkAndAddSerial(
+                      _model.code = await FlutterBarcodeScanner.scanBarcode(
+                        '#C62828', // scanning line color
+                        'Cancel', // cancel button text
+                        true, // whether to show the flash icon
+                        ScanMode.QR,
+                      );
+
+                      _model.alreadyExist = await _model.checkAndAddSerial(
                         context,
-                        serial: '111',
+                        serial: _model.code,
                         list: _model.scannedCodes,
                       );
-                      _model.addToScannedCodes(_model.scannedCode!);
-                      safeSetState(() {});
-                      _model.addToNoPackForSSCCs(10);
-                      safeSetState(() {});
-                      _model.totalCartons = _model.totalCartons + 1;
-                      safeSetState(() {});
-                      _model.scanType = scanType;
-                      safeSetState(() {});
+                      if (!_model.alreadyExist!) {
+                        _model.addToScannedCodes(_model.code);
+                        safeSetState(() {});
+                      }
 
                       safeSetState(() {});
                     },

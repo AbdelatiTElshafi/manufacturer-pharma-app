@@ -58,8 +58,9 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
   late LoadingModel loadingModel;
   // Model for Scanning component.
   late ScanningModel scanningModel;
+  var code = '';
   // Stores action output result for [Action Block - CheckAndAddSerial] action in Scanning widget.
-  String? scannedCode;
+  bool? alreadyExist;
 
   @override
   void initState(BuildContext context) {
@@ -80,7 +81,7 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
   }
 
   /// Action blocks.
-  Future<String?> checkAndAddSerial(
+  Future<bool?> checkAndAddSerial(
     BuildContext context, {
     required String? serial,
     required List<String>? list,
@@ -111,28 +112,9 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
             },
           ) ??
           false;
-      return '';
+      return true;
     } else {
-      var confirmDialogResponse = await showDialog<bool>(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text('donot exist'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext, false),
-                    child: Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext, true),
-                    child: Text('Confirm'),
-                  ),
-                ],
-              );
-            },
-          ) ??
-          false;
-      return serial;
+      return false;
     }
   }
 

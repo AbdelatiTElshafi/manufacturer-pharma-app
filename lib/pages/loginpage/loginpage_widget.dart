@@ -89,27 +89,31 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          width: 220.0,
-                          height: 80.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.fitWidth,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 220.0,
+                            height: 80.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
                           ),
-                        ),
-                      ].divide(SizedBox(height: 16.0)),
+                        ].divide(SizedBox(height: 16.0)),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.all(8.0),
@@ -134,131 +138,93 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              FutureBuilder<ApiCallResponse>(
-                                future: UserAccessMangmentGroup.getAllUsersCall
-                                    .call(),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final usernameDropDownGetAllUsersResponse =
-                                      snapshot.data!;
-
-                                  return FlutterFlowDropDown<String>(
-                                    controller: _model
-                                            .usernameDropDownValueController ??=
+                              FlutterFlowDropDown<String>(
+                                controller:
+                                    _model.usernameDropDownValueController ??=
                                         FormFieldController<String>(null),
-                                    options: _model.users,
-                                    onChanged: (val) => safeSetState(() =>
-                                        _model.usernameDropDownValue = val),
-                                    width: double.infinity,
-                                    searchHintTextStyle:
-                                        FlutterFlowTheme.of(context)
+                                options: _model.users,
+                                onChanged: (val) => safeSetState(
+                                    () => _model.usernameDropDownValue = val),
+                                width: double.infinity,
+                                searchHintTextStyle: FlutterFlowTheme.of(
+                                        context)
+                                    .labelMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF8181BC),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                    searchTextStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: Color(0xFF8181BC),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                    hintText: 'Select User',
-                                    searchHintText: 'Search...',
-                                    searchCursorColor: Color(0xFF323394),
-                                    icon: Icon(
-                                      Icons.keyboard_arrow_down_rounded,
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
                                       color: Color(0xFF8181BC),
-                                      size: 24.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
-                                    fillColor: Colors.white,
-                                    elevation: 2.0,
-                                    borderColor: Color(0xFFD7D1E3),
-                                    borderWidth: 0.0,
-                                    borderRadius: 12.0,
-                                    margin: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    hidesUnderline: true,
-                                    isOverButton: false,
-                                    isSearchable: true,
-                                    isMultiSelect: false,
-                                  );
-                                },
+                                searchTextStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF8181BC),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                hintText: 'Select User',
+                                searchHintText: 'Search...',
+                                searchCursorColor: Color(0xFF323394),
+                                icon: Icon(
+                                  Icons.keyboard_arrow_down_rounded,
+                                  color: Color(0xFF8181BC),
+                                  size: 24.0,
+                                ),
+                                fillColor: Colors.white,
+                                elevation: 2.0,
+                                borderColor: Color(0xFFD7D1E3),
+                                borderWidth: 0.0,
+                                borderRadius: 12.0,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                hidesUnderline: true,
+                                isOverButton: false,
+                                isSearchable: true,
+                                isMultiSelect: false,
                               ),
                               TextFormField(
                                 controller: _model.passwordTextController,
@@ -423,7 +389,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
                                     _model.servererror = false;
                                     safeSetState(() {});
-                                    FFAppState().usernmame =
+                                    FFAppState().userName =
                                         _model.usernameDropDownValue!;
                                     safeSetState(() {});
                                   } else {
@@ -435,13 +401,13 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                 },
                           text: 'Login',
                           options: FFButtonOptions(
-                            width: double.infinity,
+                            width: 280.0,
                             height: 48.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF323394),
+                            color: Color(0xFF09057E),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
@@ -465,30 +431,26 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(12.0),
-                            disabledColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                            disabledTextColor: Color(0xFFDBD8D8),
+                            disabledColor: Color(0xFF33389F),
+                            disabledTextColor: Colors.white,
                           ),
                         ),
                         if (_model.servererror)
                           Text(
-                            'Faild To Connect to the Server',
+                            'Failed To Connect to the Server',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
+                                    fontWeight: FontWeight.w500,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
                                   color: FlutterFlowTheme.of(context).error,
+                                  fontSize: 15.0,
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
+                                  fontWeight: FontWeight.w500,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .fontStyle,

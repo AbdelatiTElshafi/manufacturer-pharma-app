@@ -37,13 +37,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ? Builder(
               builder: (context) => Container(
                 color: Colors.transparent,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/FreeSample-Vectorizer-io-WhatsApp_Image_2025-09-19_at_14.19.11_169043a5.svg',
-                    width: 100.0,
-                    height: 100.0,
-                    fit: BoxFit.fitWidth,
-                  ),
+                child: Image.asset(
+                  'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
+                  fit: BoxFit.contain,
                 ),
               ),
             )
@@ -56,13 +52,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ? Builder(
                   builder: (context) => Container(
                     color: Colors.transparent,
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/FreeSample-Vectorizer-io-WhatsApp_Image_2025-09-19_at_14.19.11_169043a5.svg',
-                        width: 100.0,
-                        height: 100.0,
-                        fit: BoxFit.fitWidth,
-                      ),
+                    child: Image.asset(
+                      'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
@@ -187,6 +179,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: OnboardingpageWidget.routeName,
+          path: OnboardingpageWidget.routePath,
+          builder: (context, params) => OnboardingpageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -34,6 +34,8 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
   // Stores action output result for [Backend Call - API (GetOrderDetails)] action in OrdersDropDown widget.
   ApiCallResponse? getOrderDetailsResp;
   var sscc = '';
+  // Stores action output result for [Backend Call - API (Confirm Shipment)] action in ConfirmButton widget.
+  ApiCallResponse? confirmShipment;
   // Model for Loading component.
   late LoadingModel loadingModel;
   // Model for SideBar component.

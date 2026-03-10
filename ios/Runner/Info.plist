@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Manufacturer Pharma App</string>
+	<string>GXP_MAH</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Manufacturer Pharma App 9-3-2026-Abdelati</string>
+	<string>Manufacturer Pharma App</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -26,10 +26,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>manufacturerpharmaapp932026abdelati.com</string>
+        <string>manufacturerpharmaapp.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>manufacturerpharmaapp932026abdelati</string>
+        <string>manufacturerpharmaapp</string>
         </array>
         </dict>
     </array>

@@ -91,7 +91,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: FlutterFlowTheme.of(context).alternate,
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -120,550 +120,20 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                    child: Text(
-                      'Dashboard',
-                      style:
-                          FlutterFlowTheme.of(context).headlineLarge.override(
-                                font: GoogleFonts.interTight(
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineLarge
-                                      .fontStyle,
-                                ),
-                                color: Color(0xFF323394),
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineLarge
-                                    .fontStyle,
-                              ),
-                    ),
-                  ),
-                  GridView(
-                    padding: EdgeInsets.zero,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 16.0,
-                      mainAxisSpacing: 16.0,
-                      childAspectRatio: 0.7,
-                    ),
-                    primary: false,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            _model.loadingisvisable = true;
-                            safeSetState(() {});
-                            _model.getOrdersApiResults =
-                                await OrdersAPIsGroup.getOrderByUserCall.call(
-                              username: FFAppState().usernmame,
-                            );
-
-                            if ((_model.getOrdersApiResults?.succeeded ??
-                                true)) {
-                              context.pushNamed(
-                                OrdersPageWidget.routeName,
-                                queryParameters: {
-                                  'orders': serializeParam(
-                                    OrdersAPIsGroup.getOrderByUserCall.order(
-                                      (_model.getOrdersApiResults?.jsonBody ??
-                                          ''),
-                                    ),
-                                    ParamType.String,
-                                    isList: true,
-                                  ),
-                                  'customer': serializeParam(
-                                    OrdersAPIsGroup.getOrderByUserCall.customer(
-                                      (_model.getOrdersApiResults?.jsonBody ??
-                                          ''),
-                                    ),
-                                    ParamType.String,
-                                    isList: true,
-                                  ),
-                                  'status': serializeParam(
-                                    OrdersAPIsGroup.getOrderByUserCall.status(
-                                      (_model.getOrdersApiResults?.jsonBody ??
-                                          ''),
-                                    ),
-                                    ParamType.String,
-                                    isList: true,
-                                  ),
-                                  'permit': serializeParam(
-                                    OrdersAPIsGroup.getOrderByUserCall.permitNo(
-                                      (_model.getOrdersApiResults?.jsonBody ??
-                                          ''),
-                                    ),
-                                    ParamType.int,
-                                    isList: true,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                            _model.loadingisvisable = false;
-                            safeSetState(() {});
-
-                            safeSetState(() {});
-                          },
-                          child: Container(
-                            width: 0.0,
-                            height: 0.0,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 8.0,
-                                  color: Color(0x1A000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 60.0,
-                                    height: 60.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Icon(
-                                        Icons.shopping_bag_outlined,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 32.0,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'Orders',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Create & Manage Orders',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 12.0)),
-                              ),
-                            ),
-                          ),
-                        ),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: GridView(
+                      padding: EdgeInsets.zero,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8.0,
+                        mainAxisSpacing: 3.0,
+                        childAspectRatio: 0.7,
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            _model.loadingisvisable = true;
-                            safeSetState(() {});
-                            _model.getCompletedOrders =
-                                await OrdersAPIsGroup.getOrderByUserCall.call(
-                              username: FFAppState().usernmame,
-                            );
-
-                            if ((_model.getOrdersApiResults?.succeeded ??
-                                true)) {
-                              context.pushNamed(
-                                ShipmentPageWidget.routeName,
-                                queryParameters: {
-                                  'completedorders': serializeParam(
-                                    OrdersAPIsGroup.getOrderByUserCall.order(
-                                      (_model.getCompletedOrders?.jsonBody ??
-                                          ''),
-                                    ),
-                                    ParamType.String,
-                                    isList: true,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                            _model.loadingisvisable = false;
-                            safeSetState(() {});
-
-                            safeSetState(() {});
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 8.0,
-                                  color: Color(0x1A000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 60.0,
-                                    height: 60.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).success,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Icon(
-                                        Icons.local_shipping_outlined,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 32.0,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'Shipment',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Send Packed Items',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 12.0)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            _model.loadingisvisable = true;
-                            safeSetState(() {});
-                            _model.getShipedOrders =
-                                await OrdersAPIsGroup.getOrderByUserCall.call(
-                              username: FFAppState().usernmame,
-                            );
-
-                            if ((_model.getOrdersApiResults?.succeeded ??
-                                true)) {
-                              context.pushNamed(
-                                CancelShipmentPageWidget.routeName,
-                                queryParameters: {
-                                  'shipedorders': serializeParam(
-                                    OrdersAPIsGroup.getOrderByUserCall.order(
-                                      (_model.getShipedOrders?.jsonBody ?? ''),
-                                    ),
-                                    ParamType.String,
-                                    isList: true,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                            _model.loadingisvisable = false;
-                            safeSetState(() {});
-
-                            safeSetState(() {});
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 8.0,
-                                  color: Color(0x1A000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(16.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 60.0,
-                                    height: 60.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Icon(
-                                        Icons.cancel_outlined,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 32.0,
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'Cancel',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Cancel Shipments',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ].divide(SizedBox(height: 12.0)),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 8.0,
-                                color: Color(0x1A000000),
-                                offset: Offset(
-                                  0.0,
-                                  2.0,
-                                ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 60.0,
-                                  height: 60.0,
-                                  decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Icon(
-                                      Icons.inventory_2_outlined,
-                                      color: FlutterFlowTheme.of(context).info,
-                                      size: 32.0,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  'Packages',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        font: GoogleFonts.interTight(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                                Text(
-                                  'Track Packages',
-                                  textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodySmall
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .fontStyle,
-                                        ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ].divide(SizedBox(height: 12.0)),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Opacity(
-                        opacity: 0.6,
-                        child: Padding(
+                      primary: false,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        Padding(
                           padding: EdgeInsets.all(16.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -671,19 +141,469 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              scaffoldKey.currentState!.openDrawer();
+                              _model.loadingisvisable = true;
+                              safeSetState(() {});
+                              _model.getOrdersApiResults =
+                                  await OrdersAPIsGroup.getOrderByUserCall.call(
+                                username: FFAppState().userName,
+                              );
+
+                              if ((_model.getOrdersApiResults?.succeeded ??
+                                  true)) {
+                                context.pushNamed(
+                                  OrdersPageWidget.routeName,
+                                  queryParameters: {
+                                    'orders': serializeParam(
+                                      OrdersAPIsGroup.getOrderByUserCall.order(
+                                        (_model.getOrdersApiResults?.jsonBody ??
+                                            ''),
+                                      ),
+                                      ParamType.String,
+                                      isList: true,
+                                    ),
+                                    'customer': serializeParam(
+                                      OrdersAPIsGroup.getOrderByUserCall
+                                          .customer(
+                                        (_model.getOrdersApiResults?.jsonBody ??
+                                            ''),
+                                      ),
+                                      ParamType.String,
+                                      isList: true,
+                                    ),
+                                    'status': serializeParam(
+                                      OrdersAPIsGroup.getOrderByUserCall.status(
+                                        (_model.getOrdersApiResults?.jsonBody ??
+                                            ''),
+                                      ),
+                                      ParamType.String,
+                                      isList: true,
+                                    ),
+                                    'permit': serializeParam(
+                                      OrdersAPIsGroup.getOrderByUserCall
+                                          .permitNo(
+                                        (_model.getOrdersApiResults?.jsonBody ??
+                                            ''),
+                                      ),
+                                      ParamType.int,
+                                      isList: true,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+                              _model.loadingisvisable = false;
+                              safeSetState(() {});
+
+                              safeSetState(() {});
                             },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Container(
+                                width: 0.0,
+                                height: 0.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 10.0,
+                                      color: Color(0x1A000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                      spreadRadius: 0.0,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 60.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Icon(
+                                            Icons.shopping_bag_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            size: 32.0,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'Orders',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                      Text(
+                                        'Create & Manage Orders',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 12.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.loadingisvisable = true;
+                              safeSetState(() {});
+                              _model.getCompletedOrders =
+                                  await OrdersAPIsGroup.getOrderByUserCall.call(
+                                username: FFAppState().userName,
+                              );
+
+                              if ((_model.getOrdersApiResults?.succeeded ??
+                                  true)) {
+                                context.pushNamed(
+                                  ShipmentPageWidget.routeName,
+                                  queryParameters: {
+                                    'completedorders': serializeParam(
+                                      OrdersAPIsGroup.getOrderByUserCall.order(
+                                        (_model.getCompletedOrders?.jsonBody ??
+                                            ''),
+                                      ),
+                                      ParamType.String,
+                                      isList: true,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+                              _model.loadingisvisable = false;
+                              safeSetState(() {});
+
+                              safeSetState(() {});
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 10.0,
+                                      color: Color(0x1A000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                      spreadRadius: 0.0,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 60.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .success,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Icon(
+                                            Icons.local_shipping_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            size: 32.0,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'Shipment',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                      Text(
+                                        'Send Packed Items',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 12.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              _model.loadingisvisable = true;
+                              safeSetState(() {});
+                              _model.getShipedOrders =
+                                  await OrdersAPIsGroup.getOrderByUserCall.call(
+                                username: FFAppState().userName,
+                              );
+
+                              if ((_model.getOrdersApiResults?.succeeded ??
+                                  true)) {
+                                context.pushNamed(
+                                  CancelShipmentPageWidget.routeName,
+                                  queryParameters: {
+                                    'shipedorders': serializeParam(
+                                      OrdersAPIsGroup.getOrderByUserCall.order(
+                                        (_model.getShipedOrders?.jsonBody ??
+                                            ''),
+                                      ),
+                                      ParamType.String,
+                                      isList: true,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+                              _model.loadingisvisable = false;
+                              safeSetState(() {});
+
+                              safeSetState(() {});
+                            },
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 4.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 10.0,
+                                      color: Color(0x1A000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                      spreadRadius: 0.0,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 60.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Icon(
+                                            Icons.cancel_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            size: 32.0,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'Cancel',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                      Text(
+                                        'Cancel Shipments',
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ].divide(SizedBox(height: 12.0)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Material(
+                            color: Colors.transparent,
+                            elevation: 4.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 8.0,
+                                    blurRadius: 10.0,
                                     color: Color(0x1A000000),
                                     offset: Offset(
                                       0.0,
                                       2.0,
                                     ),
+                                    spreadRadius: 0.0,
                                   )
                                 ],
                                 borderRadius: BorderRadius.circular(16.0),
@@ -699,14 +619,14 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                       height: 60.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .tertiary,
                                         shape: BoxShape.circle,
                                       ),
                                       child: Align(
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Icon(
-                                          Icons.schedule_outlined,
+                                          Icons.inventory_2_outlined,
                                           color:
                                               FlutterFlowTheme.of(context).info,
                                           size: 32.0,
@@ -714,7 +634,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                       ),
                                     ),
                                     Text(
-                                      'Coming Soon',
+                                      'Packages',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
@@ -726,8 +646,6 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -737,7 +655,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                           ),
                                     ),
                                     Text(
-                                      'New Features',
+                                      'Track Packages',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodySmall
@@ -771,8 +689,8 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

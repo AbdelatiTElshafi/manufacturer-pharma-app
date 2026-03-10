@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mycompany.manufacturerpharmaapp932026abdelati"
+    package="com.mycompany.manufacturerpharmaapp"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:label="Manufacturer Pharma App"
+        android:label="GXP_MAH"
         tools:replace="android:label"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true">
@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="manufacturerpharmaapp932026abdelati" android:host="manufacturerpharmaapp932026abdelati.com" />
+                <data android:scheme="manufacturerpharmaapp" android:host="manufacturerpharmaapp.com" />
             </intent-filter>
 
         </activity>
