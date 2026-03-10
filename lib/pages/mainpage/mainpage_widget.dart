@@ -91,7 +91,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).alternate,
+        backgroundColor: Color(0xFFE0E3E7),
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(

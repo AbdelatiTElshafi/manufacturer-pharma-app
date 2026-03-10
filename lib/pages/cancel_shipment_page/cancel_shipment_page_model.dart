@@ -38,14 +38,12 @@ class CancelShipmentPageModel
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (GetOrderByUser)] action in CancelShipmentPage widget.
-  ApiCallResponse? getOrderDetailsResp;
+  ApiCallResponse? getShippedOrdersResp;
   // Model for Header component.
   late HeaderModel headerModel;
   // State field(s) for OrdersDropDown widget.
   String? ordersDropDownValue;
   FormFieldController<String>? ordersDropDownValueController;
-  // Stores action output result for [Backend Call - API (GetOrderDetails)] action in OrdersDropDown widget.
-  ApiCallResponse? getOrderDetailsResponse;
   var sscc = '';
   // Model for Loading component.
   late LoadingModel loadingModel;
@@ -64,5 +62,28 @@ class CancelShipmentPageModel
     headerModel.dispose();
     loadingModel.dispose();
     sideBarModel.dispose();
+  }
+
+  /// Action blocks.
+  Future getOrderDetails(
+    BuildContext context, {
+    String? orderNumber,
+  }) async {
+    ApiCallResponse? getOrderDetailsResp;
+
+    loadingisvisable = true;
+    getOrderDetailsResp = await OrdersAPIsGroup.getOrderDetailsCall.call(
+      orderNO: orderNumber,
+    );
+
+    if ((getOrderDetailsResp.succeeded ?? true)) {
+      orderno = OrdersAPIsGroup.getOrderDetailsCall.orderNo(
+        (getOrderDetailsResp.jsonBody ?? ''),
+      );
+      ssccState = OrdersAPIsGroup.getOrderDetailsCall.sscc(
+        (getOrderDetailsResp.jsonBody ?? ''),
+      );
+    }
+    loadingisvisable = false;
   }
 }

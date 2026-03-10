@@ -31,8 +31,6 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
   // State field(s) for OrdersDropDown widget.
   String? ordersDropDownValue;
   FormFieldController<String>? ordersDropDownValueController;
-  // Stores action output result for [Backend Call - API (GetOrderDetails)] action in OrdersDropDown widget.
-  ApiCallResponse? getOrderDetailsResp;
   var sscc = '';
   // Stores action output result for [Backend Call - API (Confirm Shipment)] action in ConfirmButton widget.
   ApiCallResponse? confirmShipment;
@@ -53,5 +51,33 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
     headerModel.dispose();
     loadingModel.dispose();
     sideBarModel.dispose();
+  }
+
+  /// Action blocks.
+  Future getOrderDetalis(
+    BuildContext context, {
+    String? orderNumber,
+  }) async {
+    ApiCallResponse? getOrderDetailsResp;
+
+    loadingisvisable = true;
+    getOrderDetailsResp = await OrdersAPIsGroup.getOrderDetailsCall.call(
+      orderNO: orderNumber,
+    );
+
+    if ((getOrderDetailsResp.succeeded ?? true)) {
+      orderno = OrdersAPIsGroup.getOrderDetailsCall.orderNo(
+        (getOrderDetailsResp.jsonBody ?? ''),
+      );
+      ssccState = OrdersAPIsGroup.getOrderDetailsCall.sscc(
+        (getOrderDetailsResp.jsonBody ?? ''),
+      );
+      bath = '000';
+      customers = OrdersAPIsGroup.getOrderDetailsCall.customer(
+        (getOrderDetailsResp.jsonBody ?? ''),
+      );
+      totolitems = '110';
+    }
+    loadingisvisable = false;
   }
 }

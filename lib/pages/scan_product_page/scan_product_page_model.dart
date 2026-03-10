@@ -145,4 +145,6 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
       }.withoutNulls,
     );
   }
+
+  Future getSerialsCounts(BuildContext context) async {}
 }

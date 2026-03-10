@@ -154,48 +154,11 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                           onChanged: (val) async {
                                             safeSetState(() => _model
                                                 .ordersDropDownValue = val);
-                                            _model.loadingisvisable = true;
-                                            safeSetState(() {});
-                                            _model.getOrderDetailsResp =
-                                                await OrdersAPIsGroup
-                                                    .getOrderDetailsCall
-                                                    .call(
-                                              orderNO:
+                                            await _model.getOrderDetalis(
+                                              context,
+                                              orderNumber:
                                                   _model.ordersDropDownValue,
                                             );
-
-                                            if ((_model.getOrderDetailsResp
-                                                    ?.succeeded ??
-                                                true)) {
-                                              _model.orderno = OrdersAPIsGroup
-                                                  .getOrderDetailsCall
-                                                  .orderNo(
-                                                (_model.getOrderDetailsResp
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              );
-                                              _model.ssccState = OrdersAPIsGroup
-                                                  .getOrderDetailsCall
-                                                  .sscc(
-                                                (_model.getOrderDetailsResp
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              );
-                                              _model.bath = '000';
-                                              _model.customers = OrdersAPIsGroup
-                                                  .getOrderDetailsCall
-                                                  .customer(
-                                                (_model.getOrderDetailsResp
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              );
-                                              _model.totolitems = '110';
-                                              safeSetState(() {});
-                                            }
-                                            _model.loadingisvisable = false;
-                                            safeSetState(() {});
-
-                                            safeSetState(() {});
                                           },
                                           height: 50.0,
                                           searchHintTextStyle: TextStyle(
@@ -267,9 +230,10 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                             ScanMode.BARCODE,
                                           );
 
-                                          _model.shipmentScanedsscc =
-                                              _model.sscc;
-                                          safeSetState(() {});
+                                          await _model.getOrderDetalis(
+                                            context,
+                                            orderNumber: _model.sscc,
+                                          );
 
                                           safeSetState(() {});
                                         },

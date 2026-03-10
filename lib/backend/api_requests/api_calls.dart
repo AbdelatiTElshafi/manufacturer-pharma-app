@@ -187,6 +187,7 @@ class OrdersAPIsGroup {
   static GetOrderDetailsCall getOrderDetailsCall = GetOrderDetailsCall();
   static ProductSerialsDetailsCall productSerialsDetailsCall =
       ProductSerialsDetailsCall();
+  static GetSerialDetailsCall getSerialDetailsCall = GetSerialDetailsCall();
 }
 
 class GetOrderByUserCall {
@@ -431,6 +432,38 @@ class ProductSerialsDetailsCall {
           .map((x) => castToType<int>(x))
           .withoutNulls
           .toList();
+}
+
+class GetSerialDetailsCall {
+  Future<ApiCallResponse> call({
+    String? serial = '',
+    String? type = '',
+  }) async {
+    final baseUrl = OrdersAPIsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "Serials": "${escapeStringForJson(serial)}",
+  "Serial_Type": "${escapeStringForJson(type)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetSerialDetails',
+      apiUrl: '${baseUrl}/GetSerialDetails',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 /// End OrdersAPIs Group Code

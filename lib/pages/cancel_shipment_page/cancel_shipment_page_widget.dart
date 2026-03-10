@@ -57,16 +57,16 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.loadingisvisable = true;
       safeSetState(() {});
-      _model.getOrderDetailsResp =
+      _model.getShippedOrdersResp =
           await OrdersAPIsGroup.getOrderByUserCall.call(
         username: FFAppState().userName,
         orderStatus: 'completed',
       );
 
-      if ((_model.getOrderDetailsResp?.succeeded ?? true)) {
+      if ((_model.getShippedOrdersResp?.succeeded ?? true)) {
         _model.shippedorders = OrdersAPIsGroup.getOrderByUserCall
             .order(
-              (_model.getOrderDetailsResp?.jsonBody ?? ''),
+              (_model.getShippedOrdersResp?.jsonBody ?? ''),
             )!
             .toList()
             .cast<String>();
@@ -183,48 +183,11 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                           onChanged: (val) async {
                                             safeSetState(() => _model
                                                 .ordersDropDownValue = val);
-                                            _model.loadingisvisable = true;
-                                            safeSetState(() {});
-                                            _model.getOrderDetailsResponse =
-                                                await OrdersAPIsGroup
-                                                    .getOrderDetailsCall
-                                                    .call(
-                                              orderNO:
+                                            await _model.getOrderDetails(
+                                              context,
+                                              orderNumber:
                                                   _model.ordersDropDownValue,
                                             );
-
-                                            if ((_model.getOrderDetailsResponse
-                                                    ?.succeeded ??
-                                                true)) {
-                                              _model.orderno = OrdersAPIsGroup
-                                                  .getOrderDetailsCall
-                                                  .orderNo(
-                                                (_model.getOrderDetailsResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              );
-                                              _model.ssccState = OrdersAPIsGroup
-                                                  .getOrderDetailsCall
-                                                  .sscc(
-                                                (_model.getOrderDetailsResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              );
-                                              _model.batch = '456';
-                                              _model.customers = OrdersAPIsGroup
-                                                  .getOrderDetailsCall
-                                                  .customer(
-                                                (_model.getOrderDetailsResponse
-                                                        ?.jsonBody ??
-                                                    ''),
-                                              );
-                                              _model.totolitems = 123;
-                                              safeSetState(() {});
-                                            }
-                                            _model.loadingisvisable = false;
-                                            safeSetState(() {});
-
-                                            safeSetState(() {});
                                           },
                                           height: 50.0,
                                           searchHintTextStyle: TextStyle(
@@ -296,9 +259,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                             ScanMode.BARCODE,
                                           );
 
-                                          _model.shipmentScanedsscc =
-                                              _model.sscc;
-                                          safeSetState(() {});
+                                          await _model.getOrderDetails(
+                                            context,
+                                            orderNumber: _model.sscc,
+                                          );
 
                                           safeSetState(() {});
                                         },

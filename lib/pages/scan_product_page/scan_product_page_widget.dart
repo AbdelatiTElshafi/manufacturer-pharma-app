@@ -253,7 +253,8 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(6.0, 20.0, 6.0, 10.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -276,9 +277,10 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                             options: FFButtonOptions(
                               width: 160.0,
                               height: 50.0,
-                              padding: EdgeInsets.all(0.0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
+                                  0.0, 8.0, 0.0, 0.0),
                               color: Color(0xFFD32F2F),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
@@ -301,7 +303,12 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                               borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
-                              borderRadius: BorderRadius.circular(16.0),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(0.0),
+                                bottomRight: Radius.circular(0.0),
+                                topLeft: Radius.circular(0.0),
+                                topRight: Radius.circular(0.0),
+                              ),
                             ),
                           ),
                         ),
@@ -320,7 +327,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                               height: 50.0,
                               padding: EdgeInsets.all(8.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
+                                  0.0, 1.0, 0.0, 0.0),
                               color: Color(0xFF09057E),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
