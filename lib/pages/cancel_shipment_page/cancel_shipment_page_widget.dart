@@ -277,7 +277,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                             );
                                             await _model.getOrderDetails(
                                               context,
-                                              orderNumber: 'SSCC',
+                                              orderNumber: _model.sscc,
                                             );
 
                                             safeSetState(() {});
