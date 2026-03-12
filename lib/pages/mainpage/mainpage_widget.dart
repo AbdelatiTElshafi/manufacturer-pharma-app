@@ -205,7 +205,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                 width: 0.0,
                                 height: 0.0,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 10.0,
@@ -226,21 +226,20 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: 60.0,
-                                        height: 60.0,
+                                        width: 53.0,
+                                        height: 53.0,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          color: Color(0x003221D1),
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Icon(
-                                            Icons.shopping_bag_outlined,
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            size: 32.0,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/pallet_(1).png',
+                                            width: 100.0,
+                                            height: 100.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -257,6 +256,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
+                                              color: Color(0xFF10558B),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -272,23 +272,15 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                             .bodySmall
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.w500,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall
                                                         .fontStyle,
                                               ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                              color: Color(0xFF175E94),
                                               letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .fontWeight,
+                                              fontWeight: FontWeight.w500,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -346,7 +338,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 10.0,
@@ -367,21 +359,20 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: 60.0,
-                                        height: 60.0,
+                                        width: 65.0,
+                                        height: 65.0,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .success,
+                                          color: Color(0x00249689),
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Icon(
-                                            Icons.local_shipping_outlined,
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            size: 32.0,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/delivery-truck.png',
+                                            width: 200.0,
+                                            height: 200.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -398,6 +389,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
+                                              color: Color(0xFF10558B),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -413,23 +405,15 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                             .bodySmall
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.w500,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall
                                                         .fontStyle,
                                               ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                              color: Color(0xFF175E94),
                                               letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .fontWeight,
+                                              fontWeight: FontWeight.w500,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -487,7 +471,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 10.0,
@@ -508,21 +492,20 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        width: 60.0,
-                                        height: 60.0,
+                                        width: 45.0,
+                                        height: 45.0,
                                         decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
+                                          color: Color(0x00FF5963),
                                           shape: BoxShape.circle,
                                         ),
-                                        child: Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Icon(
-                                            Icons.cancel_outlined,
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            size: 32.0,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/cancel.png',
+                                            width: 200.0,
+                                            height: 200.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -539,6 +522,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                                         .titleMedium
                                                         .fontStyle,
                                               ),
+                                              color: Color(0xFF10558B),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
@@ -554,23 +538,15 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                             .bodySmall
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.w500,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall
                                                         .fontStyle,
                                               ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                              color: Color(0xFF175E94),
                                               letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .fontWeight,
+                                              fontWeight: FontWeight.w500,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -594,7 +570,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                             ),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: FlutterFlowTheme.of(context).alternate,
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 10.0,
@@ -615,21 +591,20 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: 60.0,
-                                      height: 60.0,
+                                      width: 45.0,
+                                      height: 45.0,
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
+                                        color: Color(0x00EE8B60),
                                         shape: BoxShape.circle,
                                       ),
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        child: Icon(
-                                          Icons.inventory_2_outlined,
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          size: 32.0,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.asset(
+                                          'assets/images/package.png',
+                                          width: 200.0,
+                                          height: 200.0,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
@@ -646,6 +621,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
+                                            color: Color(0xFF10558B),
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                             fontStyle:
@@ -661,22 +637,15 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                           .bodySmall
                                           .override(
                                             font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .fontWeight,
+                                              fontWeight: FontWeight.w500,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: Color(0xFF175E94),
                                             letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .fontWeight,
+                                            fontWeight: FontWeight.w500,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodySmall
