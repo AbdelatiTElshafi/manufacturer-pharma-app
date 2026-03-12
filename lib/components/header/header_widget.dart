@@ -117,19 +117,19 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 10.0),
+                                  0.0, 0.0, 5.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor: Colors.transparent,
                                 borderWidth: 1.0,
-                                buttonSize: 40.0,
+                                buttonSize: 50.0,
                                 fillColor: Color(0x00F5F6FA),
                                 icon: Icon(
-                                  Icons.arrow_back,
+                                  Icons.menu,
                                   color: Colors.white,
                                   size: 33.0,
                                 ),
                                 onPressed: () async {
-                                  context.safePop();
+                                  await widget.showMenu?.call();
                                 },
                               ),
                             ),
