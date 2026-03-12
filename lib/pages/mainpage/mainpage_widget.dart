@@ -189,7 +189,24 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                     ),
                                   }.withoutNulls,
                                 );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Fail to connect  the server',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
                               }
+
                               _model.loadingisvisable = false;
                               safeSetState(() {});
 
@@ -205,7 +222,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                 width: 0.0,
                                 height: 0.0,
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: Color(0xFFE0E3E7),
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 10.0,
@@ -324,7 +341,24 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                     ),
                                   }.withoutNulls,
                                 );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Fail to connect  the server',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
                               }
+
                               _model.loadingisvisable = false;
                               safeSetState(() {});
 
@@ -338,7 +372,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: Color(0xFFE0E3E7),
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 10.0,
@@ -457,7 +491,24 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                     ),
                                   }.withoutNulls,
                                 );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Fail to connect  the server',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
                               }
+
                               _model.loadingisvisable = false;
                               safeSetState(() {});
 
@@ -471,7 +522,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                               ),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: Color(0xFFE0E3E7),
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 10.0,
@@ -570,7 +621,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                             ),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).alternate,
+                                color: Color(0xFFE0E3E7),
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 10.0,
