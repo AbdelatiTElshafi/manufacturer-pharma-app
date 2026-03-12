@@ -758,6 +758,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                    color: Color(0xFF14181B),
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .bodyMedium
