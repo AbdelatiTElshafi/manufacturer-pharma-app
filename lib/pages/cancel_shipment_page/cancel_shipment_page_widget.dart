@@ -746,6 +746,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
+                                labelText: _model.orderno,
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
