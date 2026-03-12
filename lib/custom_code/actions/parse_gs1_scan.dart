@@ -16,57 +16,42 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       'batch': '',
       'expiry': '',
       'raw': rawScan ?? '',
-      'normalized': '',
     };
   }
 
   String data = rawScan.trim();
 
-  // Normalize common scanner representations
-  data = data
-      .replaceAll(r'\u001D', String.fromCharCode(29))
-      .replaceAll('<GS>', String.fromCharCode(29))
-      .replaceAll('[GS]', String.fromCharCode(29))
-      .replaceAll('{GS}', String.fromCharCode(29));
-
-  // Remove common symbology identifier prefix like ]C1 ]d2 etc.
+  // Remove common scanner prefix like ]C1
   if (data.startsWith(']') && data.length >= 3) {
     data = data.substring(3);
   }
 
-  // Remove parentheses style: (01)(21)(17)(10)
-  data = data.replaceAll('(', '').replaceAll(')', '');
+  // Normalize GS / FNC1 representations
+  data = data
+      .replaceAll('<GS>', String.fromCharCode(29))
+      .replaceAll('[GS]', String.fromCharCode(29))
+      .replaceAll('{GS}', String.fromCharCode(29))
+      .replaceAll(r'\u001D', String.fromCharCode(29));
 
   String gtin = '';
   String serial = '';
   String batch = '';
   String expiry = '';
 
-  bool isKnownAiAt(String s, int index) {
-    if (index + 2 <= s.length) {
-      final ai2 = s.substring(index, index + 2);
-      if (ai2 == '01' || ai2 == '10' || ai2 == '17' || ai2 == '21') {
-        return true;
-      }
-    }
-    return false;
-  }
-
   int i = 0;
+
   while (i < data.length) {
-    // Skip group separator if present
+    // Skip separator if found
     if (data.codeUnitAt(i) == 29) {
       i++;
       continue;
     }
 
-    if (i + 2 > data.length) {
-      break;
-    }
+    if (i + 2 > data.length) break;
 
     final ai = data.substring(i, i + 2);
 
-    // AI 01 = GTIN (fixed 14 digits)
+    // AI 01 = GTIN (14 digits fixed)
     if (ai == '01') {
       if (i + 16 <= data.length) {
         gtin = data.substring(i + 2, i + 16);
@@ -77,33 +62,12 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       }
     }
 
-    // AI 17 = Expiry YYMMDD (fixed 6 digits)
-    if (ai == '17') {
-      if (i + 8 <= data.length) {
-        expiry = data.substring(i + 2, i + 8);
-        i += 8;
-        continue;
-      } else {
-        break;
-      }
-    }
-
-    // AI 21 = Serial (variable length)
+    // AI 21 = Serial (variable, ends at GS/FNC1)
     if (ai == '21') {
       i += 2;
       final start = i;
 
-      while (i < data.length) {
-        if (data.codeUnitAt(i) == 29) {
-          break;
-        }
-
-        // In your barcode, 21 is usually followed by 17
-        // but we also support other known AIs just in case
-        if (isKnownAiAt(data, i)) {
-          break;
-        }
-
+      while (i < data.length && data.codeUnitAt(i) != 29) {
         i++;
       }
 
@@ -115,21 +79,23 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       continue;
     }
 
-    // AI 10 = Batch/Lot (variable length)
+    // AI 17 = Expiry (6 digits fixed YYMMDD)
+    if (ai == '17') {
+      if (i + 8 <= data.length) {
+        expiry = data.substring(i + 2, i + 8);
+        i += 8;
+        continue;
+      } else {
+        break;
+      }
+    }
+
+    // AI 10 = Batch/Lot (variable, usually last field)
     if (ai == '10') {
       i += 2;
       final start = i;
 
-      while (i < data.length) {
-        if (data.codeUnitAt(i) == 29) {
-          break;
-        }
-
-        // Batch is commonly the last field, but still support separator/next AI
-        if (isKnownAiAt(data, i)) {
-          break;
-        }
-
+      while (i < data.length && data.codeUnitAt(i) != 29) {
         i++;
       }
 
@@ -141,7 +107,7 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
       continue;
     }
 
-    // Move forward if current position is not a recognized AI
+    // Move forward if current chars are not recognized AI
     i++;
   }
 
@@ -153,6 +119,5 @@ Future<dynamic> parseGs1Scan(String? rawScan) async {
     'batch': batch,
     'expiry': expiry,
     'raw': rawScan,
-    'normalized': data,
   };
 }
