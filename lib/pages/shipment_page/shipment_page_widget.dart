@@ -105,7 +105,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 0.0, 0.0),
+                                0.0, 20.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +128,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Color(0xFFB22222),
-                                            fontSize: 17.0,
+                                            fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                             fontStyle:
@@ -302,7 +302,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                8.0, 15.0, 8.0, 0.0),
+                                8.0, 20.0, 8.0, 0.0),
                             child: Material(
                               color: Colors.transparent,
                               elevation: 2.0,

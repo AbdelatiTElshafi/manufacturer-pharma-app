@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/header/header_widget.dart';
+import '/components/header2/header2_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/product_details_card/product_details_card_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
@@ -154,13 +154,11 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 wrapWithModel(
-                  model: _model.headerModel,
+                  model: _model.header2Model,
                   updateCallback: () => safeSetState(() {}),
-                  child: HeaderWidget(
+                  child: Header2Widget(
                     pagename: '#${widget.orderNO}',
-                    showMenu: () async {
-                      scaffoldKey.currentState!.openDrawer();
-                    },
+                    showMenu: () async {},
                   ),
                 ),
                 Padding(

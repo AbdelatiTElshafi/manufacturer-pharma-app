@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/header2/header2_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/s_s_c_c_card/s_s_c_c_card_widget.dart';
 import '/components/scanning/scanning_widget.dart';
@@ -146,226 +147,229 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
         ),
         body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 15.0, 5.0, 5.0),
-                        child: wrapWithModel(
-                          model: _model.testModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: TestWidget(
-                            totalPallets: _model.totalpallets!,
-                            totalCartons: _model.totalCartons,
-                            totalItems: _model.totalitems!,
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        thickness: 2.0,
-                        color: Color(0xFFE0E3E7),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 394.29,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 8.0,
-                                color: Color(0x1A000000),
-                                offset: Offset(
-                                  0.0,
-                                  2.0,
-                                ),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final itemsNo =
-                                          _model.scannedCodes.toList();
-
-                                      return ListView.separated(
-                                        padding: EdgeInsets.zero,
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: itemsNo.length,
-                                        separatorBuilder: (_, __) =>
-                                            SizedBox(height: 2.0),
-                                        itemBuilder: (context, itemsNoIndex) {
-                                          final itemsNoItem =
-                                              itemsNo[itemsNoIndex];
-                                          return wrapWithModel(
-                                            model:
-                                                _model.sSCCCardModels.getModel(
-                                              itemsNoItem,
-                                              itemsNoIndex,
-                                            ),
-                                            updateCallback: () =>
-                                                safeSetState(() {}),
-                                            child: SSCCCardWidget(
-                                              key: Key(
-                                                'Keyy0n_${itemsNoItem}',
-                                              ),
-                                              sscc: _model.scannedCodes
-                                                  .elementAtOrNull(
-                                                      itemsNoIndex)!,
-                                              itemcount: 9,
-                                              serialtype: 'Case',
-                                              palletcount: 9,
-                                              cartooncount: 9,
-                                              delete: () async {
-                                                _model.removeFromScannedCodes(
-                                                    itemsNoItem);
-                                                safeSetState(() {});
-                                              },
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(6.0, 20.0, 6.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.all(5.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  await _model.backToOrderDetailesPage(
-                                    context,
-                                    orderno: widget.orderno,
-                                    customer: '999',
-                                  );
-                                },
-                                text: 'Cancel ',
-                                icon: Icon(
-                                  Icons.cancel_rounded,
-                                  size: 25.0,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 160.0,
-                                  height: 50.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 0.0, 0.0),
-                                  color: Color(0xFFD32F2F),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        font: GoogleFonts.interTight(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: Colors.white,
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontStyle,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                  ),
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Padding(
-                              padding: EdgeInsets.all(5.0),
-                              child: FFButtonWidget(
-                                onPressed: () {
-                                  print('ConfirmButton pressed ...');
-                                },
-                                text: 'Update',
-                                icon: Icon(
-                                  Icons.upload_sharp,
-                                  size: 25.0,
-                                ),
-                                options: FFButtonOptions(
-                                  width: double.infinity,
-                                  height: 50.0,
-                                  padding: EdgeInsets.all(8.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 1.0, 0.0, 0.0),
-                                  color: Color(0xFF09057E),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleMedium
-                                      .override(
-                                        font: GoogleFonts.interTight(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMedium
-                                                  .fontStyle,
-                                        ),
-                                        color: Colors.white,
-                                        fontSize: 18.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleMedium
-                                            .fontStyle,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                  ),
-                                  borderRadius: BorderRadius.circular(16.0),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: wrapWithModel(
+                    model: _model.header2Model,
+                    updateCallback: () => safeSetState(() {}),
+                    child: Header2Widget(
+                      pagename: 'Product Scanner',
+                      showMenu: () async {},
                     ),
                   ),
-                ],
-              ),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 5.0),
+                      child: wrapWithModel(
+                        model: _model.testModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: TestWidget(
+                          totalPallets: _model.totalpallets!,
+                          totalCartons: _model.totalCartons,
+                          totalItems: _model.totalitems!,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      thickness: 2.0,
+                      color: Color(0xFFE0E3E7),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 394.29,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 8.0,
+                              color: Color(0x1A000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final itemsNo =
+                                        _model.scannedCodes.toList();
+
+                                    return ListView.separated(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: itemsNo.length,
+                                      separatorBuilder: (_, __) =>
+                                          SizedBox(height: 2.0),
+                                      itemBuilder: (context, itemsNoIndex) {
+                                        final itemsNoItem =
+                                            itemsNo[itemsNoIndex];
+                                        return wrapWithModel(
+                                          model: _model.sSCCCardModels.getModel(
+                                            itemsNoItem,
+                                            itemsNoIndex,
+                                          ),
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: SSCCCardWidget(
+                                            key: Key(
+                                              'Keyy0n_${itemsNoItem}',
+                                            ),
+                                            sscc: _model.scannedCodes
+                                                .elementAtOrNull(itemsNoIndex)!,
+                                            itemcount: 9,
+                                            serialtype: 'Case',
+                                            palletcount: 9,
+                                            cartooncount: 9,
+                                            delete: () async {
+                                              _model.removeFromScannedCodes(
+                                                  itemsNoItem);
+                                              safeSetState(() {});
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(6.0, 20.0, 6.0, 10.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                await _model.backToOrderDetailesPage(
+                                  context,
+                                  orderno: widget.orderno,
+                                  customer: '999',
+                                );
+                              },
+                              text: 'Cancel ',
+                              icon: Icon(
+                                Icons.cancel_rounded,
+                                size: 25.0,
+                              ),
+                              options: FFButtonOptions(
+                                width: 160.0,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 8.0, 0.0, 0.0),
+                                color: Color(0xFFD32F2F),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: FFButtonWidget(
+                              onPressed: () {
+                                print('ConfirmButton pressed ...');
+                              },
+                              text: 'Update',
+                              icon: Icon(
+                                Icons.upload_sharp,
+                                size: 25.0,
+                              ),
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 50.0,
+                                padding: EdgeInsets.all(8.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 1.0, 0.0, 0.0),
+                                color: Color(0xFF09057E),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleMedium
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleMedium
+                                            .fontStyle,
+                                      ),
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .fontStyle,
+                                    ),
+                                elevation: 3.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
             if (_model.loadingIsVisable)
               wrapWithModel(

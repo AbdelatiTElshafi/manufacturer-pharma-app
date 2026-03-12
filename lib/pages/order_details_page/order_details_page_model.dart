@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/header/header_widget.dart';
+import '/components/header2/header2_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -62,22 +62,22 @@ class OrderDetailsPageModel extends FlutterFlowModel<OrderDetailsPageWidget> {
   ApiCallResponse? ordersDetails;
   // Model for SideBar component.
   late SideBarModel sideBarModel;
-  // Model for Header component.
-  late HeaderModel headerModel;
+  // Model for Header2 component.
+  late Header2Model header2Model;
   // Model for Loading component.
   late LoadingModel loadingModel;
 
   @override
   void initState(BuildContext context) {
     sideBarModel = createModel(context, () => SideBarModel());
-    headerModel = createModel(context, () => HeaderModel());
+    header2Model = createModel(context, () => Header2Model());
     loadingModel = createModel(context, () => LoadingModel());
   }
 
   @override
   void dispose() {
     sideBarModel.dispose();
-    headerModel.dispose();
+    header2Model.dispose();
     loadingModel.dispose();
   }
 }

@@ -91,7 +91,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
         color: Colors.transparent,
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 14.0, 16.0, 14.0),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -206,7 +206,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                               ),
                             ],
                           ),
-                        ].divide(SizedBox(height: 4.0)),
+                        ].divide(SizedBox(height: 8.0)),
                       ),
                     ),
                     FFButtonWidget(

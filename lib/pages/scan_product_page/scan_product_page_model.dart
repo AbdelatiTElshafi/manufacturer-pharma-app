@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/components/header2/header2_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/s_s_c_c_card/s_s_c_c_card_widget.dart';
 import '/components/scanning/scanning_widget.dart';
@@ -50,6 +51,8 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
   ApiCallResponse? productdetails;
   // Model for SideBar component.
   late SideBarModel sideBarModel;
+  // Model for Header2 component.
+  late Header2Model header2Model;
   // Model for test component.
   late TestModel testModel;
   // Models for SSCCCard dynamic component.
@@ -65,6 +68,7 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
   @override
   void initState(BuildContext context) {
     sideBarModel = createModel(context, () => SideBarModel());
+    header2Model = createModel(context, () => Header2Model());
     testModel = createModel(context, () => TestModel());
     sSCCCardModels = FlutterFlowDynamicModels(() => SSCCCardModel());
     loadingModel = createModel(context, () => LoadingModel());
@@ -74,6 +78,7 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
   @override
   void dispose() {
     sideBarModel.dispose();
+    header2Model.dispose();
     testModel.dispose();
     sSCCCardModels.dispose();
     loadingModel.dispose();
