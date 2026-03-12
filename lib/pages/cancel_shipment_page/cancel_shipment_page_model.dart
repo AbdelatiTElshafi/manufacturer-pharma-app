@@ -45,6 +45,8 @@ class CancelShipmentPageModel
   String? ordersDropDownValue;
   FormFieldController<String>? ordersDropDownValueController;
   var sscc = '';
+  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
+  dynamic json;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

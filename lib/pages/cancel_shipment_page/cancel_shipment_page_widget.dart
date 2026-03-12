@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -76,11 +77,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
       safeSetState(() {});
     });
 
-    _model.textController ??= TextEditingController(
-        text: valueOrDefault<String>(
-      _model.orderno,
-      '##',
-    ));
+    _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -277,9 +274,14 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                               ScanMode.BARCODE,
                                             );
 
+                                            _model.json =
+                                                await actions.parseGs1Scan(
+                                              _model.sscc,
+                                            );
                                             await _model.getOrderDetails(
                                               context,
-                                              orderNumber: _model.sscc,
+                                              orderNumber:
+                                                  _model.json?.toString(),
                                             );
 
                                             safeSetState(() {});
@@ -746,7 +748,6 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                               obscureText: false,
                               decoration: InputDecoration(
                                 isDense: true,
-                                labelText: _model.orderno,
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
