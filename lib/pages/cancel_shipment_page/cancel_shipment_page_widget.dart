@@ -277,8 +277,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                             );
                                             await _model.getOrderDetails(
                                               context,
-                                              orderNumber:
-                                                  _model.json?.toString(),
+                                              orderNumber: getJsonField(
+                                                _model.json,
+                                                r'''$.serial''',
+                                              ).toString(),
                                             );
 
                                             safeSetState(() {});
