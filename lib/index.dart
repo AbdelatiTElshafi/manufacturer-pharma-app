@@ -10,4 +10,5 @@ export '/pages/order_details_page/order_details_page_widget.dart'
     show OrderDetailsPageWidget;
 export '/pages/scan_product_page/scan_product_page_widget.dart'
     show ScanProductPageWidget;
-export '/onboardingpage/onboardingpage_widget.dart' show OnboardingpageWidget;
+export '/pages/onboardingpage/onboardingpage_widget.dart'
+    show OnboardingpageWidget;

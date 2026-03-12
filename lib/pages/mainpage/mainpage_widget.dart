@@ -283,7 +283,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                                             ),
                                       ),
                                       Text(
-                                        'Create & Manage Orders',
+                                        'Manage Orders',
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall

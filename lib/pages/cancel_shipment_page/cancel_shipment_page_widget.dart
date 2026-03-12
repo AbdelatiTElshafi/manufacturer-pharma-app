@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/cancelation_widget.dart';
+import '/components/cancelation/cancelation_widget.dart';
 import '/components/header/header_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
@@ -761,7 +761,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                             size: 25.0,
                           ),
                           options: FFButtonOptions(
-                            width: double.infinity,
+                            width: 280.0,
                             height: 56.0,
                             padding: EdgeInsets.all(8.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
