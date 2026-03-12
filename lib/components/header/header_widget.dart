@@ -115,23 +115,19 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                         Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 5.0, 0.0),
-                              child: FlutterFlowIconButton(
-                                borderColor: Colors.transparent,
-                                borderWidth: 1.0,
-                                buttonSize: 50.0,
-                                fillColor: Color(0x00F5F6FA),
-                                icon: Icon(
-                                  Icons.menu,
-                                  color: Colors.white,
-                                  size: 33.0,
-                                ),
-                                onPressed: () async {
-                                  await widget.showMenu?.call();
-                                },
+                            FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderWidth: 1.0,
+                              buttonSize: 50.0,
+                              fillColor: Color(0x00F5F6FA),
+                              icon: Icon(
+                                Icons.menu,
+                                color: Colors.white,
+                                size: 33.0,
                               ),
+                              onPressed: () async {
+                                await widget.showMenu?.call();
+                              },
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
@@ -143,9 +139,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
-                                      'GXP',
+                                      valueOrDefault<String>(
+                                        widget.pagename,
+                                        'page',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -157,45 +156,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                                       .fontStyle,
                                             ),
                                             color: Colors.white,
-                                            fontSize: 22.0,
+                                            fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 5.0, 0.0, 0.0),
-                                    child: Text(
-                                      'Manufacturer Operations',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .fontStyle,
-                                            ),
-                                            color: Colors.white,
-                                            fontSize: 12.3,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLarge
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLarge
                                                     .fontStyle,
                                           ),
                                     ),

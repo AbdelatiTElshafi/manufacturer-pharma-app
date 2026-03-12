@@ -112,7 +112,7 @@ class _MainpageWidgetState extends State<MainpageWidget> {
                     model: _model.headerModel,
                     updateCallback: () => safeSetState(() {}),
                     child: HeaderWidget(
-                      pagename: 'Main',
+                      pagename: 'GXP Operations',
                       showMenu: () async {
                         scaffoldKey.currentState!.openDrawer();
                       },

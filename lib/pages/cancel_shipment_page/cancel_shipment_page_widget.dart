@@ -117,7 +117,7 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                     model: _model.headerModel,
                     updateCallback: () => safeSetState(() {}),
                     child: HeaderWidget(
-                      pagename: 'Cancel',
+                      pagename: 'Cancelled Orders',
                       showMenu: () async {
                         scaffoldKey.currentState!.openDrawer();
                       },
@@ -434,7 +434,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                _model.orderno!,
+                                                valueOrDefault<String>(
+                                                  _model.orderno,
+                                                  '###',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -495,7 +498,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                _model.ssccState!,
+                                                valueOrDefault<String>(
+                                                  _model.ssccState,
+                                                  '###',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -556,7 +562,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                _model.batch!,
+                                                valueOrDefault<String>(
+                                                  _model.batch,
+                                                  '###',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -617,7 +626,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                _model.customers!,
+                                                valueOrDefault<String>(
+                                                  _model.customers,
+                                                  '###',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -678,7 +690,10 @@ class _CancelShipmentPageWidgetState extends State<CancelShipmentPageWidget> {
                                                     ),
                                               ),
                                               Text(
-                                                _model.totolitems!.toString(),
+                                                valueOrDefault<String>(
+                                                  _model.totolitems?.toString(),
+                                                  ' ###',
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium

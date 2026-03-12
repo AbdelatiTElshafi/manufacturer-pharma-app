@@ -88,7 +88,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                     model: _model.headerModel,
                     updateCallback: () => safeSetState(() {}),
                     child: HeaderWidget(
-                      pagename: 'Shipment',
+                      pagename: 'Shipments',
                       showMenu: () async {
                         scaffoldKey.currentState!.openDrawer();
                       },
