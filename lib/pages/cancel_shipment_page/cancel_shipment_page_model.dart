@@ -47,10 +47,6 @@ class CancelShipmentPageModel
   var sscc = '';
   // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
   dynamic json;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for Loading component.
   late LoadingModel loadingModel;
   // Model for SideBar component.
@@ -66,9 +62,6 @@ class CancelShipmentPageModel
   @override
   void dispose() {
     headerModel.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
-
     loadingModel.dispose();
     sideBarModel.dispose();
   }
