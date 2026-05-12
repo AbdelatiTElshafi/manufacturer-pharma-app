@@ -53,7 +53,7 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
         width: double.infinity,
         height: 115.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFF08143F),
           boxShadow: [
             BoxShadow(
               blurRadius: 4.0,
@@ -65,6 +65,10 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
             )
           ],
           borderRadius: BorderRadius.circular(12.0),
+          border: Border.all(
+            color: Color(0xFF1A2E6B),
+            width: 1.0,
+          ),
         ),
         child: Padding(
           padding: EdgeInsets.all(10.0),
@@ -83,22 +87,23 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                       children: [
                         Text(
                           'ORDER NO',
-                          style:
-                              FlutterFlowTheme.of(context).labelSmall.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF57636C),
-                                    fontSize: 10.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .fontStyle,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .labelSmall
+                              .override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).alternate,
+                                fontSize: 10.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .fontStyle,
+                              ),
                         ),
                         Text(
                           valueOrDefault<String>(
@@ -113,7 +118,8 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF14181B),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -130,22 +136,23 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                       children: [
                         Text(
                           'CUSTOMER',
-                          style:
-                              FlutterFlowTheme.of(context).labelSmall.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF57636C),
-                                    fontSize: 10.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .fontStyle,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .labelSmall
+                              .override(
+                                font: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).alternate,
+                                fontSize: 10.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelSmall
+                                    .fontStyle,
+                              ),
                         ),
                         Text(
                           valueOrDefault<String>(
@@ -160,7 +167,8 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF14181B),
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -191,7 +199,7 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                                     .labelSmall
                                     .fontStyle,
                               ),
-                              color: Color(0xFF57636C),
+                              color: FlutterFlowTheme.of(context).alternate,
                               fontSize: 10.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
@@ -215,7 +223,8 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFF14181B),
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               fontSize: 14.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
@@ -239,7 +248,7 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                                     .labelSmall
                                     .fontStyle,
                               ),
-                              color: Color(0xFF57636C),
+                              color: FlutterFlowTheme.of(context).alternate,
                               fontSize: 10.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
@@ -260,7 +269,8 @@ class _OrderDataWidgetState extends State<OrderDataWidget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFF14181B),
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
                               fontSize: 14.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,

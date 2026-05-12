@@ -78,7 +78,7 @@ class _Header2WidgetState extends State<Header2Widget> {
           width: double.infinity,
           height: 100.0,
           decoration: BoxDecoration(
-            color: Color(0xFF261D66),
+            color: Color(0x61261D66),
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,
@@ -90,12 +90,7 @@ class _Header2WidgetState extends State<Header2Widget> {
                 spreadRadius: 0.0,
               )
             ],
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(0.0),
-              bottomRight: Radius.circular(0.0),
-              topLeft: Radius.circular(0.0),
-              topRight: Radius.circular(0.0),
-            ),
+            borderRadius: BorderRadius.only(),
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
@@ -124,9 +119,9 @@ class _Header2WidgetState extends State<Header2Widget> {
                                 buttonSize: 50.0,
                                 fillColor: Color(0x00F5F6FA),
                                 icon: Icon(
-                                  Icons.arrow_back,
+                                  Icons.arrow_back_ios,
                                   color: Colors.white,
-                                  size: 33.0,
+                                  size: 24.0,
                                 ),
                                 onPressed: () async {
                                   context.safePop();
@@ -153,16 +148,16 @@ class _Header2WidgetState extends State<Header2Widget> {
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.interTight(
-                                              fontWeight: FontWeight.w500,
+                                              fontWeight: FontWeight.w600,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             color: Colors.white,
-                                            fontSize: 24.0,
+                                            fontSize: 21.0,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium

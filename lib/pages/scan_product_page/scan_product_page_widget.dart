@@ -3,11 +3,11 @@ import '/components/header2/header2_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/s_s_c_c_card/s_s_c_c_card_widget.dart';
 import '/components/scanning/scanning_widget.dart';
-import '/components/side_bar/side_bar_widget.dart';
 import '/components/test/test_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -135,35 +135,38 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
-        drawer: Drawer(
-          elevation: 16.0,
-          child: wrapWithModel(
-            model: _model.sideBarModel,
-            updateCallback: () => safeSetState(() {}),
-            child: SideBarWidget(
-              pageName: 'ScanPage',
-            ),
-          ),
-        ),
         body: Stack(
           children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/ChatGPT_Image_May_11,_2026,_06_54_37_PM.png',
+                  ).image,
+                ),
+              ),
+            ),
             Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Expanded(
-                  child: wrapWithModel(
-                    model: _model.header2Model,
-                    updateCallback: () => safeSetState(() {}),
-                    child: Header2Widget(
-                      pagename: 'Product Scanner',
-                      showMenu: () async {},
-                    ),
+                wrapWithModel(
+                  model: _model.header2Model,
+                  updateCallback: () => safeSetState(() {}),
+                  child: Header2Widget(
+                    pagename: 'Product Scanner',
+                    showMenu: () async {},
                   ),
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding:
@@ -180,16 +183,16 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                     ),
                     Divider(
                       thickness: 2.0,
-                      color: Color(0xFFE0E3E7),
+                      color: Color(0xFF737576),
                     ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                       child: Container(
                         width: double.infinity,
-                        height: 394.29,
+                        height: 390.0,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFF04113D),
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 8.0,
@@ -264,7 +267,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(6.0, 20.0, 6.0, 10.0),
+                        EdgeInsetsDirectional.fromSTEB(6.0, 15.0, 6.0, 10.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -290,10 +293,10 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                                 width: 160.0,
                                 height: 50.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 0.0),
+                                    0.0, 0.0, 0.0, 0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 8.0, 0.0, 0.0),
-                                color: Color(0xFFD32F2F),
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0xFF3B002C),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
@@ -303,7 +306,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                                             .titleMedium
                                             .fontStyle,
                                       ),
-                                      color: Colors.white,
+                                      color: Color(0xFFF73746),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -313,7 +316,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
-                                  color: Colors.transparent,
+                                  color: Color(0xFFF09595),
                                 ),
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
@@ -335,10 +338,10 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 50.0,
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(0.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 1.0, 0.0, 0.0),
-                                color: Color(0xFF09057E),
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0x8D1B1464),
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleMedium
                                     .override(
@@ -348,7 +351,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                                             .titleMedium
                                             .fontStyle,
                                       ),
-                                      color: Colors.white,
+                                      color: Color(0xFFA89BFF),
                                       fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
@@ -358,7 +361,8 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
-                                  color: Colors.transparent,
+                                  color: Color(0xFF7A5CFF),
+                                  width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
@@ -385,20 +389,49 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
                   updateCallback: () => safeSetState(() {}),
                   child: ScanningWidget(
                     qraction: (scanType) async {
-                      _model.code = await FlutterBarcodeScanner.scanBarcode(
+                      _model.scannedDMCode =
+                          await FlutterBarcodeScanner.scanBarcode(
                         '#C62828', // scanning line color
                         'Cancel', // cancel button text
-                        true, // whether to show the flash icon
+                        true, // whether to show the torch (camera LED) toggle icon
                         ScanMode.QR,
                       );
 
+                      _model.parsedGs1Code = await actions.parseGs1Scan(
+                        _model.scannedDMCode,
+                      );
                       _model.alreadyExist = await _model.checkAndAddSerial(
                         context,
-                        serial: _model.code,
+                        serial: getJsonField(
+                          _model.parsedGs1Code,
+                          r'''$.serial''',
+                        ).toString(),
                         list: _model.scannedCodes,
                       );
-                      if (!_model.alreadyExist!) {
-                        _model.addToScannedCodes(_model.code);
+                      if (_model.alreadyExist!) {
+                        var confirmDialogResponse = await showDialog<bool>(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Seial Alread Scanned'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                          alertDialogContext, false),
+                                      child: Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(
+                                          alertDialogContext, true),
+                                      child: Text('Confirm'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ) ??
+                            false;
+                      } else {
+                        _model.addToScannedCodes(_model.scannedDMCode);
                         safeSetState(() {});
                       }
 

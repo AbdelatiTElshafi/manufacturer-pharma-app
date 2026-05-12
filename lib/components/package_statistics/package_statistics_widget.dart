@@ -120,6 +120,7 @@ class _PackageStatisticsWidgetState extends State<PackageStatisticsWidget> {
                                             .titleLarge
                                             .fontStyle,
                                       ),
+                                      fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -187,6 +188,7 @@ class _PackageStatisticsWidgetState extends State<PackageStatisticsWidget> {
                                       ),
                                       color:
                                           FlutterFlowTheme.of(context).success,
+                                      fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -253,6 +255,7 @@ class _PackageStatisticsWidgetState extends State<PackageStatisticsWidget> {
                                             .fontStyle,
                                       ),
                                       color: FlutterFlowTheme.of(context).error,
+                                      fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)

@@ -5,6 +5,7 @@ import '/components/s_s_c_c_card/s_s_c_c_card_widget.dart';
 import '/components/scanning/scanning_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
 import '/components/test/test_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -104,6 +105,19 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
         ),
         body: Stack(
           children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/ChatGPT_Image_May_11,_2026,_06_54_37_PM.png',
+                  ).image,
+                ),
+              ),
+            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -163,7 +177,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                         width: double.infinity,
                         height: 160.0,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Color(0xFF04113D),
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 8.0,
@@ -251,7 +265,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                     _model.code = await FlutterBarcodeScanner.scanBarcode(
                       '#C62828', // scanning line color
                       'Cancel', // cancel button text
-                      true, // whether to show the flash icon
+                      true, // whether to show the torch (camera LED) toggle icon
                       ScanMode.QR,
                     );
 

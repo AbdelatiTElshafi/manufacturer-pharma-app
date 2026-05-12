@@ -137,6 +137,7 @@ class _PackageOverviewWidgetState extends State<PackageOverviewWidget> {
                                         .fontStyle,
                                   ),
                                   color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)
@@ -203,6 +204,7 @@ class _PackageOverviewWidgetState extends State<PackageOverviewWidget> {
                                         .fontStyle,
                                   ),
                                   color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)
@@ -272,6 +274,7 @@ class _PackageOverviewWidgetState extends State<PackageOverviewWidget> {
                                         .fontStyle,
                                   ),
                                   color: FlutterFlowTheme.of(context).primary,
+                                  fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)

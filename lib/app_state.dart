@@ -37,4 +37,10 @@ class FFAppState extends ChangeNotifier {
   set userRole(String value) {
     _userRole = value;
   }
+
+  String _ScannedBarcode = '';
+  String get ScannedBarcode => _ScannedBarcode;
+  set ScannedBarcode(String value) {
+    _ScannedBarcode = value;
+  }
 }

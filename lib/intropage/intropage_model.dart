@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'onboardingpage_widget.dart' show OnboardingpageWidget;
+import '/index.dart';
+import 'intropage_widget.dart' show IntropageWidget;
 import 'package:flutter/material.dart';
 
-class OnboardingpageModel extends FlutterFlowModel<OnboardingpageWidget> {
+class IntropageModel extends FlutterFlowModel<IntropageWidget> {
   @override
   void initState(BuildContext context) {}
 

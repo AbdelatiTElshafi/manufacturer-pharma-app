@@ -150,6 +150,19 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
         ),
         body: Stack(
           children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/ChatGPT_Image_May_11,_2026,_06_54_37_PM.png',
+                  ).image,
+                ),
+              ),
+            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -172,7 +185,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                         Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color(0xFF0D214D),
                             boxShadow: [
                               BoxShadow(
                                 blurRadius: 8.0,
@@ -184,9 +197,13 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                               )
                             ],
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1E90FF),
+                              width: 1.0,
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(15.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,7 +228,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -233,21 +253,17 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.normal,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -256,6 +272,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                       ),
                                     ),
                                   ],
+                                ),
+                                Divider(
+                                  thickness: 0.8,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -277,7 +297,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -299,21 +322,17 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.normal,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -322,6 +341,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                       ),
                                     ),
                                   ],
+                                ),
+                                Divider(
+                                  thickness: 0.8,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -343,7 +366,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -365,21 +391,17 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.normal,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -388,6 +410,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                       ),
                                     ),
                                   ],
+                                ),
+                                Divider(
+                                  thickness: 0.8,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -409,7 +435,10 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontSize: 15.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -431,21 +460,17 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                             .bodyMedium
                                             .override(
                                               font: GoogleFonts.inter(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
+                                                fontWeight: FontWeight.normal,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF14181B),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
+                                                      .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -455,7 +480,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                     ),
                                   ],
                                 ),
-                              ].divide(SizedBox(height: 8.0)),
+                              ].divide(SizedBox(height: 5.0)),
                             ),
                           ),
                         ),
@@ -471,15 +496,16 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                     .titleMedium
                                     .override(
                                       font: GoogleFonts.interTight(
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF323394),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       fontSize: 20.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .fontStyle,
@@ -495,7 +521,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                               width: double.infinity,
                               height: 385.58,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Color(0xFF04113D),
                                 boxShadow: [
                                   BoxShadow(
                                     blurRadius: 8.0,
@@ -508,37 +534,41 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                                 ],
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              child: Builder(
-                                builder: (context) {
-                                  final itemNo = _model.products.toList();
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    6.0, 10.0, 6.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final itemNo = _model.products.toList();
 
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: itemNo.length,
-                                    itemBuilder: (context, itemNoIndex) {
-                                      final itemNoItem = itemNo[itemNoIndex];
-                                      return ProductDetailsCardWidget(
-                                        key: Key(
-                                            'Keyib2_${itemNoIndex}_of_${itemNo.length}'),
-                                        productname: _model.products
-                                            .elementAtOrNull(itemNoIndex)!,
-                                        gtin: _model.gtins
-                                            .elementAtOrNull(itemNoIndex)!,
-                                        requiredqty: _model.requiredqtys
-                                            .elementAtOrNull(itemNoIndex)!,
-                                        scannedqty: _model.scannedqtys
-                                            .elementAtOrNull(itemNoIndex)!,
-                                        orderNo: widget.orderNO!,
-                                        viewloadingcontrol: (view) async {
-                                          _model.loadingIsVisable = view;
-                                          safeSetState(() {});
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: itemNo.length,
+                                      itemBuilder: (context, itemNoIndex) {
+                                        final itemNoItem = itemNo[itemNoIndex];
+                                        return ProductDetailsCardWidget(
+                                          key: Key(
+                                              'Keyib2_${itemNoIndex}_of_${itemNo.length}'),
+                                          productname: _model.products
+                                              .elementAtOrNull(itemNoIndex)!,
+                                          gtin: _model.gtins
+                                              .elementAtOrNull(itemNoIndex)!,
+                                          requiredqty: _model.requiredqtys
+                                              .elementAtOrNull(itemNoIndex)!,
+                                          scannedqty: _model.scannedqtys
+                                              .elementAtOrNull(itemNoIndex)!,
+                                          orderNo: widget.orderNO!,
+                                          viewloadingcontrol: (view) async {
+                                            _model.loadingIsVisable = view;
+                                            safeSetState(() {});
+                                          },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ],

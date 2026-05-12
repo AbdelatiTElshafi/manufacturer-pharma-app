@@ -1,6 +1,7 @@
 import '/components/header/header_widget.dart';
 import '/components/order_card/order_card_widget.dart';
-import '/components/side_bar/side_bar_widget.dart';
+import '/components/side_bar_copy/side_bar_copy_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'orders_page_model.dart';
@@ -58,70 +59,86 @@ class _OrdersPageWidgetState extends State<OrdersPageWidget> {
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
-            model: _model.sideBarModel,
+            model: _model.sideBarCopyModel,
             updateCallback: () => safeSetState(() {}),
-            child: SideBarWidget(
-              pageName: 'OrdersPage',
-            ),
+            child: SideBarCopyWidget(),
           ),
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
+        body: Stack(
           children: [
-            wrapWithModel(
-              model: _model.headerModel,
-              updateCallback: () => safeSetState(() {}),
-              child: HeaderWidget(
-                pagename: 'Orders',
-                showMenu: () async {
-                  scaffoldKey.currentState!.openDrawer();
-                },
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset(
+                    'assets/images/ChatGPT_Image_May_11,_2026,_06_54_37_PM.png',
+                  ).image,
+                ),
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(5.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 600.0,
-                  decoration: BoxDecoration(
-                    color: Color(0x00FFFFFF),
-                  ),
-                  child: Builder(
-                    builder: (context) {
-                      final itemNo = widget.orders!.toList();
-
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        primary: false,
-                        scrollDirection: Axis.vertical,
-                        itemCount: itemNo.length,
-                        itemBuilder: (context, itemNoIndex) {
-                          final itemNoItem = itemNo[itemNoIndex];
-                          return wrapWithModel(
-                            model: _model.orderCardModels.getModel(
-                              itemNoItem,
-                              itemNoIndex,
-                            ),
-                            updateCallback: () => safeSetState(() {}),
-                            child: OrderCardWidget(
-                              key: Key(
-                                'Keyrsi_${itemNoItem}',
-                              ),
-                              order: (widget.orders!
-                                  .elementAtOrNull(itemNoIndex))!,
-                              customer: (widget.customer!
-                                  .elementAtOrNull(itemNoIndex))!,
-                              status: (widget.status!
-                                  .elementAtOrNull(itemNoIndex))!,
-                            ),
-                          );
-                        },
-                      );
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                wrapWithModel(
+                  model: _model.headerModel,
+                  updateCallback: () => safeSetState(() {}),
+                  child: HeaderWidget(
+                    pagename: 'Orders',
+                    showMenu: () async {
+                      scaffoldKey.currentState!.openDrawer();
                     },
                   ),
                 ),
-              ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 5.0, 5.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 600.0,
+                      decoration: BoxDecoration(
+                        color: Color(0x00FFFFFF),
+                      ),
+                      child: Builder(
+                        builder: (context) {
+                          final itemNo = widget.orders!.toList();
+
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            primary: false,
+                            scrollDirection: Axis.vertical,
+                            itemCount: itemNo.length,
+                            itemBuilder: (context, itemNoIndex) {
+                              final itemNoItem = itemNo[itemNoIndex];
+                              return wrapWithModel(
+                                model: _model.orderCardModels.getModel(
+                                  itemNoItem,
+                                  itemNoIndex,
+                                ),
+                                updateCallback: () => safeSetState(() {}),
+                                child: OrderCardWidget(
+                                  key: Key(
+                                    'Keyrsi_${itemNoItem}',
+                                  ),
+                                  order: (widget.orders!
+                                      .elementAtOrNull(itemNoIndex))!,
+                                  customer: (widget.customer!
+                                      .elementAtOrNull(itemNoIndex))!,
+                                  status: (widget.status!
+                                      .elementAtOrNull(itemNoIndex))!,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

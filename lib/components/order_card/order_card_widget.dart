@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'order_card_model.dart';
 export 'order_card_model.dart';
@@ -88,13 +89,13 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Color(0xFF04113D),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 14.0, 16.0, 14.0),
+        padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 5.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Color(0xFF08143F),
             boxShadow: [
               BoxShadow(
                 blurRadius: 8.0,
@@ -107,13 +108,17 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
               )
             ],
             borderRadius: BorderRadius.circular(12.0),
+            border: Border.all(
+              color: Color(0xFF1A2E6B),
+              width: 2.0,
+            ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Row(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 14.0, 10.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
@@ -131,7 +136,9 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                             .bodyLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF2E3192),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 18.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -139,134 +146,166 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                           .fontStyle,
                                     ),
                           ),
-                          Text(
-                            'Customer: ${widget.customer}',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFF6B7280),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                          Text(
-                            'Status: ${widget.status}',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFFF15B29),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Icon(
+                                Icons.person_outlined,
+                                color: Color(0xFF4C6FFF),
+                                size: 20.0,
+                              ),
+                              Text(
+                                'Customer: ${widget.customer}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ].divide(SizedBox(width: 3.0)),
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
+                              Icon(
+                                Icons.playlist_add_check_outlined,
+                                color: Color(0xFF6C4DFF),
+                                size: 20.0,
+                              ),
                               Text(
                                 'Permit: #${widget.permit.toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       font: GoogleFonts.inter(
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.normal,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF2563EB),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.normal,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .fontStyle,
                                     ),
                               ),
-                            ],
+                            ].divide(SizedBox(width: 3.0)),
                           ),
-                        ].divide(SizedBox(height: 8.0)),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.circleNotch,
+                                color: Color(0xFF1FE0C5),
+                                size: 16.0,
+                              ),
+                              Text(
+                                'Status: ${widget.status}',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ].divide(SizedBox(width: 5.0)),
+                          ),
+                        ].divide(SizedBox(height: 10.0)),
                       ),
                     ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        context.pushNamed(
-                          OrderDetailsPageWidget.routeName,
-                          queryParameters: {
-                            'orderNO': serializeParam(
-                              widget.order,
-                              ParamType.String,
-                            ),
-                            'customer': serializeParam(
-                              widget.customer,
-                              ParamType.String,
-                            ),
-                            'batchNo': serializeParam(
-                              '202520',
-                              ParamType.String,
-                            ),
-                            'quantity': serializeParam(
-                              '50000',
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
-                      },
-                      text: 'Start Pack',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsets.all(8.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFFF15B29),
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
-                                  font: GoogleFonts.inter(
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          context.pushNamed(
+                            OrderDetailsPageWidget.routeName,
+                            queryParameters: {
+                              'orderNO': serializeParam(
+                                widget.order,
+                                ParamType.String,
+                              ),
+                              'customer': serializeParam(
+                                widget.customer,
+                                ParamType.String,
+                              ),
+                              'batchNo': serializeParam(
+                                '202520',
+                                ParamType.String,
+                              ),
+                              'quantity': serializeParam(
+                                '50000',
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
+                        },
+                        text: 'Start Pack',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsets.all(8.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0xFFF15B29),
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ].divide(SizedBox(width: 16.0)),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

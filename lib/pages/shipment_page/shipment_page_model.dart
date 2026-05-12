@@ -1,7 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/header/header_widget.dart';
 import '/components/loading/loading_widget.dart';
-import '/components/side_bar/side_bar_widget.dart';
+import '/components/side_bar_copy/side_bar_copy_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'shipment_page_widget.dart' show ShipmentPageWidget;
@@ -31,26 +31,28 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
   // State field(s) for OrdersDropDown widget.
   String? ordersDropDownValue;
   FormFieldController<String>? ordersDropDownValueController;
-  var sscc = '';
+  var sannedCode = '';
+  // Stores action output result for [Custom Action - parseGs1Scan] action in ScanButton widget.
+  dynamic gS1ParsedData;
   // Stores action output result for [Backend Call - API (Confirm Shipment)] action in ConfirmButton widget.
   ApiCallResponse? confirmShipment;
   // Model for Loading component.
   late LoadingModel loadingModel;
-  // Model for SideBar component.
-  late SideBarModel sideBarModel;
+  // Model for SideBarCopy component.
+  late SideBarCopyModel sideBarCopyModel;
 
   @override
   void initState(BuildContext context) {
     headerModel = createModel(context, () => HeaderModel());
     loadingModel = createModel(context, () => LoadingModel());
-    sideBarModel = createModel(context, () => SideBarModel());
+    sideBarCopyModel = createModel(context, () => SideBarCopyModel());
   }
 
   @override
   void dispose() {
     headerModel.dispose();
     loadingModel.dispose();
-    sideBarModel.dispose();
+    sideBarCopyModel.dispose();
   }
 
   /// Action blocks.

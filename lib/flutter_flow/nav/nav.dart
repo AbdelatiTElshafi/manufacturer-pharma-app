@@ -37,9 +37,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ? Builder(
               builder: (context) => Container(
                 color: Colors.transparent,
-                child: Image.asset(
-                  'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
-                  fit: BoxFit.contain,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/gxptrace_icon_final.png',
+                    width: 300.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             )
@@ -52,18 +55,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ? Builder(
                   builder: (context) => Container(
                     color: Colors.transparent,
-                    child: Image.asset(
-                      'assets/images/WhatsApp_Image_2025-08-07_at_23.55.07_ffb6cbc4.jpg',
-                      fit: BoxFit.contain,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/gxptrace_icon_final.png',
+                        width: 300.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 )
               : LoginpageWidget(),
-        ),
-        FFRoute(
-          name: LoginpageWidget.routeName,
-          path: LoginpageWidget.routePath,
-          builder: (context, params) => LoginpageWidget(),
         ),
         FFRoute(
           name: OrdersPageWidget.routeName,
@@ -181,11 +182,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: OnboardingpageWidget.routeName,
-          path: OnboardingpageWidget.routePath,
-          builder: (context, params) => OnboardingpageWidget(),
+          name: IntropageWidget.routeName,
+          path: IntropageWidget.routePath,
+          builder: (context, params) => IntropageWidget(),
+        ),
+        FFRoute(
+          name: LoginpageWidget.routeName,
+          path: LoginpageWidget.routePath,
+          builder: (context, params) => LoginpageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
+      observers: [routeObserver],
     );
 
 extension NavParamExtensions on Map<String, String?> {

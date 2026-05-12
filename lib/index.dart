@@ -1,5 +1,4 @@
 // Export pages
-export '/pages/loginpage/loginpage_widget.dart' show LoginpageWidget;
 export '/pages/orders_page/orders_page_widget.dart' show OrdersPageWidget;
 export '/pages/mainpage/mainpage_widget.dart' show MainpageWidget;
 export '/pages/scan_page/scan_page_widget.dart' show ScanPageWidget;
@@ -10,5 +9,5 @@ export '/pages/order_details_page/order_details_page_widget.dart'
     show OrderDetailsPageWidget;
 export '/pages/scan_product_page/scan_product_page_widget.dart'
     show ScanProductPageWidget;
-export '/pages/onboardingpage/onboardingpage_widget.dart'
-    show OnboardingpageWidget;
+export '/intropage/intropage_widget.dart' show IntropageWidget;
+export '/pages/loginpage/loginpage_widget.dart' show LoginpageWidget;

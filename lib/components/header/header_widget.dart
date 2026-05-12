@@ -78,7 +78,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           width: double.infinity,
           height: 100.0,
           decoration: BoxDecoration(
-            color: Color(0xFF261D66),
+            color: Color(0x61261D66),
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,
@@ -90,12 +90,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                 spreadRadius: 0.0,
               )
             ],
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(0.0),
-              bottomRight: Radius.circular(0.0),
-              topLeft: Radius.circular(0.0),
-              topRight: Radius.circular(0.0),
-            ),
+            borderRadius: BorderRadius.only(),
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
@@ -123,7 +118,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                               icon: Icon(
                                 Icons.menu,
                                 color: Colors.white,
-                                size: 33.0,
+                                size: 28.0,
                               ),
                               onPressed: () async {
                                 await widget.showMenu?.call();
@@ -149,16 +144,16 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                                           .titleMedium
                                           .override(
                                             font: GoogleFonts.interTight(
-                                              fontWeight: FontWeight.w500,
+                                              fontWeight: FontWeight.w600,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleMedium
                                                       .fontStyle,
                                             ),
                                             color: Colors.white,
-                                            fontSize: 24.0,
+                                            fontSize: 23.0,
                                             letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight: FontWeight.w600,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleMedium

@@ -3,7 +3,6 @@ import '/components/header2/header2_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/s_s_c_c_card/s_s_c_c_card_widget.dart';
 import '/components/scanning/scanning_widget.dart';
-import '/components/side_bar/side_bar_widget.dart';
 import '/components/test/test_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -49,8 +48,6 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
 
   // Stores action output result for [Backend Call - API (ProductSerialsDetails)] action in ScanProductPage widget.
   ApiCallResponse? productdetails;
-  // Model for SideBar component.
-  late SideBarModel sideBarModel;
   // Model for Header2 component.
   late Header2Model header2Model;
   // Model for test component.
@@ -61,13 +58,14 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
   late LoadingModel loadingModel;
   // Model for Scanning component.
   late ScanningModel scanningModel;
-  var code = '';
+  var scannedDMCode = '';
+  // Stores action output result for [Custom Action - parseGs1Scan] action in Scanning widget.
+  dynamic parsedGs1Code;
   // Stores action output result for [Action Block - CheckAndAddSerial] action in Scanning widget.
   bool? alreadyExist;
 
   @override
   void initState(BuildContext context) {
-    sideBarModel = createModel(context, () => SideBarModel());
     header2Model = createModel(context, () => Header2Model());
     testModel = createModel(context, () => TestModel());
     sSCCCardModels = FlutterFlowDynamicModels(() => SSCCCardModel());
@@ -77,7 +75,6 @@ class ScanProductPageModel extends FlutterFlowModel<ScanProductPageWidget> {
 
   @override
   void dispose() {
-    sideBarModel.dispose();
     header2Model.dispose();
     testModel.dispose();
     sSCCCardModels.dispose();

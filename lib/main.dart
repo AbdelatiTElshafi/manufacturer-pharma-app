@@ -6,14 +6,31 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
+import 'package:flutter/services.dart';
+
+
+const MethodChannel zebraScanChannel = MethodChannel('com.gxptrace/scan');
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  zebraScanChannel.setMethodCallHandler((call) async {
+    if (call.method == 'barcodeScanned') {
+      final scannedCode = call.arguments?.toString() ?? '';
+
+      if (scannedCode.isNotEmpty) {
+        FFAppState().ScannedBarcode = scannedCode;
+        print('ZEBRA SCANNED: $scannedCode');
+      }
+    }
+  });
+
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
   await FlutterFlowTheme.initialize();
 
-  final appState = FFAppState(); // Initialize FFAppState
+  final appState = FFAppState();
   await appState.initializePersistedState();
 
   runApp(ChangeNotifierProvider(
@@ -42,7 +59,7 @@ class _MyAppState extends State<MyApp> {
     final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
         ? lastMatch.matches
         : _router.routerDelegate.currentConfiguration;
-    return matchList.uri.toString();
+    return matchList.uri.path;
   }
 
   List<String> getRouteStack() =>

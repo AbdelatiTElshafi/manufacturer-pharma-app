@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'test_model.dart';
 export 'test_model.dart';
@@ -70,7 +71,7 @@ class _TestWidgetState extends State<TestWidget> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Color(0xFF04113D),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -79,7 +80,7 @@ class _TestWidgetState extends State<TestWidget> {
             width: double.infinity,
             height: 112.0,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color(0xFF070B34),
               boxShadow: [
                 BoxShadow(
                   blurRadius: 8.0,
@@ -94,7 +95,7 @@ class _TestWidgetState extends State<TestWidget> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -105,11 +106,14 @@ class _TestWidgetState extends State<TestWidget> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color: Color(0xFF08143F),
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(8.0),
                             child: SingleChildScrollView(
                               primary: false,
                               child: Column(
@@ -117,9 +121,9 @@ class _TestWidgetState extends State<TestWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    Icons.local_offer,
-                                    color: FlutterFlowTheme.of(context).primary,
+                                  FaIcon(
+                                    FontAwesomeIcons.cubes,
+                                    color: Color(0xFF4C6FFF),
                                     size: 24.0,
                                   ),
                                   Text(
@@ -138,7 +142,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                     .fontStyle,
                                           ),
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
+                                              .secondaryBackground,
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
@@ -162,7 +166,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                     .titleLarge
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF4B39EF),
+                                          color: Color(0xFF4C6FFF),
+                                          fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           fontStyle:
@@ -180,18 +185,21 @@ class _TestWidgetState extends State<TestWidget> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color: Color(0xFF08143F),
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
                                   Icons.check_circle,
-                                  color: FlutterFlowTheme.of(context).success,
+                                  color: Color(0xFF1FE0C5),
                                   size: 24.0,
                                 ),
                                 Text(
@@ -210,7 +218,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .fontStyle,
                                         ),
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -232,8 +240,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .success,
+                                        color: Color(0xFF1FE0C5),
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -249,18 +257,21 @@ class _TestWidgetState extends State<TestWidget> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color: Color(0xFF08143F),
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
                                   Icons.warning,
-                                  color: FlutterFlowTheme.of(context).error,
+                                  color: Color(0xFFFF5A68),
                                   size: 24.0,
                                 ),
                                 Text(
@@ -279,7 +290,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .fontStyle,
                                         ),
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -301,8 +312,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
+                                        color: Color(0xFFFF5A68),
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -324,7 +335,7 @@ class _TestWidgetState extends State<TestWidget> {
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color(0xFF070B34),
               boxShadow: [
                 BoxShadow(
                   blurRadius: 8.0,
@@ -339,7 +350,7 @@ class _TestWidgetState extends State<TestWidget> {
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -350,19 +361,22 @@ class _TestWidgetState extends State<TestWidget> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color: Color(0xFF08143F),
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.inventory_2,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
+                                  Icons.layers_outlined,
+                                  color: Color(0xFF4C6FFF),
+                                  size: 28.0,
                                 ),
                                 Text(
                                   'Pallets',
@@ -380,7 +394,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .fontStyle,
                                         ),
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -405,8 +419,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                        color: Color(0xFF4C6FFF),
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -422,19 +436,22 @@ class _TestWidgetState extends State<TestWidget> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color: Color(0xFF08143F),
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
-                                  Icons.inventory,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
+                                FaIcon(
+                                  FontAwesomeIcons.boxOpen,
+                                  color: Color(0xFF6C4DFF),
+                                  size: 22.0,
                                 ),
                                 Text(
                                   'Cases',
@@ -452,7 +469,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .fontStyle,
                                         ),
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -477,8 +494,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                        color: Color(0xFF6C4DFF),
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -494,19 +511,22 @@ class _TestWidgetState extends State<TestWidget> {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFF1F4F8),
+                            color: Color(0xFF08143F),
                             borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFF1A2E6B),
+                            ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(5.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.view_in_ar,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
+                                  Icons.format_list_numbered_outlined,
+                                  color: Color(0xFF6C4DFF),
+                                  size: 26.0,
                                 ),
                                 Text(
                                   'Total Items',
@@ -524,7 +544,7 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .fontStyle,
                                         ),
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                            .secondaryBackground,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -549,8 +569,8 @@ class _TestWidgetState extends State<TestWidget> {
                                                   .titleLarge
                                                   .fontStyle,
                                         ),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                        color: Color(0xFF6C4DFF),
+                                        fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
