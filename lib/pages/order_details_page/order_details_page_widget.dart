@@ -158,7 +158,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: Image.asset(
-                    'assets/images/ChatGPT_Image_May_11,_2026,_06_54_37_PM.png',
+                    'assets/images/ChatGPT_Image_May_14,_2026,_07_04_57_PM.png',
                   ).image,
                 ),
               ),

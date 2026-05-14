@@ -4,11 +4,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'loginpage_model.dart';
 export 'loginpage_model.dart';
 
@@ -35,6 +37,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.initializeDataWedgeScanner();
       _model.servererror = false;
       safeSetState(() {});
       _model.getUsesResp = await UserAccessMangmentGroup.getAllUsersCall.call();
@@ -68,6 +71,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -581,7 +586,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          'Version 1.0.0',
+                          'Version 1.0.0${FFAppState().ScannedBarcode}',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(

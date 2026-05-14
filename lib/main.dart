@@ -6,31 +6,14 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
-import 'package:flutter/services.dart';
-
-
-const MethodChannel zebraScanChannel = MethodChannel('com.gxptrace/scan');
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  zebraScanChannel.setMethodCallHandler((call) async {
-    if (call.method == 'barcodeScanned') {
-      final scannedCode = call.arguments?.toString() ?? '';
-
-      if (scannedCode.isNotEmpty) {
-        FFAppState().ScannedBarcode = scannedCode;
-        print('ZEBRA SCANNED: $scannedCode');
-      }
-    }
-  });
-
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
   await FlutterFlowTheme.initialize();
 
-  final appState = FFAppState();
+  final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
   runApp(ChangeNotifierProvider(
