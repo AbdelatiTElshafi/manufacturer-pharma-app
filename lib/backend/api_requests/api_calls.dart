@@ -655,6 +655,47 @@ class GetOrdersDataCall {
           .toList();
 }
 
+class ForecastCall {
+  static Future<ApiCallResponse> call() async {
+    final ffApiRequestBody = '''
+{
+  "latitude": [30.13],
+  "longitude": [31.24],
+  "current": [
+    "temperature_2m",
+    "relative_humidity_2m",
+    "pressure_msl",
+    "wind_speed_10m"
+  ]
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'forecast',
+      apiUrl: 'https://api.open-meteo.com/v1/forecast',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static double? temperature2m(dynamic response) =>
+      castToType<double>(getJsonField(
+        response,
+        r'''$.current.temperature_2m''',
+      ));
+  static int? humidity2m(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.current.relative_humidity_2m''',
+      ));
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

@@ -10,7 +10,6 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'loginpage_model.dart';
 export 'loginpage_model.dart';
 
@@ -37,25 +36,57 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.initializeDataWedgeScanner();
-      _model.servererror = false;
-      safeSetState(() {});
-      _model.getUsesResp = await UserAccessMangmentGroup.getAllUsersCall.call();
+      await Future.wait([
+        Future(() async {
+          await actions.initializeDataWedgeScanner();
+          _model.servererror = false;
+          safeSetState(() {});
+          _model.getUsesResp =
+              await UserAccessMangmentGroup.getAllUsersCall.call();
 
-      if ((_model.userLoginResp?.succeeded ?? true)) {
-        _model.servererror = false;
-        safeSetState(() {});
-        _model.users = UserAccessMangmentGroup.getAllUsersCall
-            .name(
-              (_model.getUsesResp?.jsonBody ?? ''),
-            )!
-            .toList()
-            .cast<String>();
-        safeSetState(() {});
-      } else {
-        _model.servererror = true;
-        safeSetState(() {});
-      }
+          if ((_model.userLoginResp?.succeeded ?? true)) {
+            _model.servererror = false;
+            safeSetState(() {});
+            _model.users = UserAccessMangmentGroup.getAllUsersCall
+                .name(
+                  (_model.getUsesResp?.jsonBody ?? ''),
+                )!
+                .toList()
+                .cast<String>();
+            safeSetState(() {});
+          } else {
+            _model.servererror = true;
+            safeSetState(() {});
+          }
+        }),
+        Future(() async {
+          await actions.initializeDataWedgeScanner();
+        }),
+        Future(() async {
+          _model.getDeviceType = await actions.getDeviceType();
+          var confirmDialogResponse = await showDialog<bool>(
+                context: context,
+                builder: (alertDialogContext) {
+                  return AlertDialog(
+                    title: Text(_model.getDeviceType!),
+                    actions: [
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, false),
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () =>
+                            Navigator.pop(alertDialogContext, true),
+                        child: Text('Confirm'),
+                      ),
+                    ],
+                  );
+                },
+              ) ??
+              false;
+        }),
+      ]);
     });
 
     _model.passwordTextController ??= TextEditingController();
@@ -71,8 +102,6 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -586,7 +615,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          'Version 1.0.0${FFAppState().ScannedBarcode}',
+                          'Version 1.0.0',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(

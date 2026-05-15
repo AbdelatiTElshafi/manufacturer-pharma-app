@@ -136,8 +136,6 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      width: double.infinity,
-                      height: 120.0,
                       decoration: BoxDecoration(),
                       child: Padding(
                         padding: EdgeInsets.all(5.0),
@@ -174,8 +172,6 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
                       child: Container(
-                        width: double.infinity,
-                        height: 160.0,
                         decoration: BoxDecoration(
                           color: Color(0xFF04113D),
                           boxShadow: [
