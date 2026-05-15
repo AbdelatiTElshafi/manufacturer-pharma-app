@@ -60,31 +60,56 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
           }
         }),
         Future(() async {
-          await actions.initializeDataWedgeScanner();
-        }),
-        Future(() async {
           _model.getDeviceType = await actions.getDeviceType();
-          var confirmDialogResponse = await showDialog<bool>(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text(_model.getDeviceType!),
-                    actions: [
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.pop(alertDialogContext, false),
-                        child: Text('Cancel'),
-                      ),
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.pop(alertDialogContext, true),
-                        child: Text('Confirm'),
-                      ),
-                    ],
-                  );
-                },
-              ) ??
-              false;
+          if (_model.getDeviceType == 'Zebra') {
+            await actions.initializeDataWedgeScanner();
+          } else if (_model.getDeviceType == 'honeywell') {
+            var confirmDialogResponse = await showDialog<bool>(
+                  context: context,
+                  builder: (alertDialogContext) {
+                    return AlertDialog(
+                      title: Text('honeywell'),
+                      content: Text('honeywell'),
+                      actions: [
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pop(alertDialogContext, false),
+                          child: Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pop(alertDialogContext, true),
+                          child: Text('Confirm'),
+                        ),
+                      ],
+                    );
+                  },
+                ) ??
+                false;
+          } else {
+            var confirmDialogResponse = await showDialog<bool>(
+                  context: context,
+                  builder: (alertDialogContext) {
+                    return AlertDialog(
+                      title: Text('Device Type'),
+                      content: Text('This Device Don\'t Contain Code Imager'),
+                      actions: [
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pop(alertDialogContext, false),
+                          child: Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pop(alertDialogContext, true),
+                          child: Text('Confirm'),
+                        ),
+                      ],
+                    );
+                  },
+                ) ??
+                false;
+          }
         }),
       ]);
     });
