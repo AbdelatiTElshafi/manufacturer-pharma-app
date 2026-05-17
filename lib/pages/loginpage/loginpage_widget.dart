@@ -64,7 +64,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
           _model.getDeviceType = await actions.getDeviceType();
           if (_model.getDeviceType == 'Zebra') {
             await actions.initializeDataWedgeScanner();
-          } else if (_model.getDeviceType == 'honeywell') {
+          } else if (_model.getDeviceType == 'Honeywell') {
             var confirmDialogResponse = await showDialog<bool>(
                   context: context,
                   builder: (alertDialogContext) {
