@@ -93,7 +93,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                   context: context,
                   builder: (alertDialogContext) {
                     return AlertDialog(
-                      title: Text('Device Type'),
+                      title: Text(_model.getDeviceType!),
                       content: Text('This Device Don\'t Contain Code Imager'),
                       actions: [
                         TextButton(
