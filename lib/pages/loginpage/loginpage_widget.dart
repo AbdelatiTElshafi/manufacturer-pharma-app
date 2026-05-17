@@ -10,6 +10,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'loginpage_model.dart';
 export 'loginpage_model.dart';
 
@@ -86,6 +87,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                   },
                 ) ??
                 false;
+            await actions.initializeHoneywellScanner();
           } else {
             var confirmDialogResponse = await showDialog<bool>(
                   context: context,
@@ -127,6 +129,8 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -663,6 +667,24 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                               ),
                         ),
                       ],
+                    ),
+                    Text(
+                      FFAppState().ScannedBarcode,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: FlutterFlowTheme.of(context).error,
+                            fontSize: 15.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FontWeight.w500,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                     ),
                   ],
                 ),
