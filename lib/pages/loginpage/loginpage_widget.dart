@@ -87,7 +87,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                   },
                 ) ??
                 false;
-            await actions.initializeHoneywellScanner();
+            await actions.initializeScanWedge();
           } else {
             var confirmDialogResponse = await showDialog<bool>(
                   context: context,
