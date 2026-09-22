@@ -5,7 +5,6 @@ import '/components/s_s_c_c_card/s_s_c_c_card_widget.dart';
 import '/components/scanning/scanning_widget.dart';
 import '/components/side_bar/side_bar_widget.dart';
 import '/components/test/test_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -92,7 +91,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF04113D),
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -105,19 +104,6 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
         ),
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/ChatGPT_Image_May_14,_2026,_07_04_57_PM.png',
-                  ).image,
-                ),
-              ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -165,7 +151,7 @@ class _ScanPageWidgetState extends State<ScanPageWidget> {
                       ),
                     ),
                     Divider(
-                      thickness: 2.0,
+                      thickness: 1.0,
                       color: Color(0xFFE0E3E7),
                     ),
                     Padding(

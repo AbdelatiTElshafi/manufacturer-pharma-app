@@ -4,3 +4,4 @@ export 'parse_gs1_scan.dart' show parseGs1Scan;
 export 'initialize_data_wedge_scanner.dart' show initializeDataWedgeScanner;
 export 'get_device_type.dart' show getDeviceType;
 export 'initialize_scan_wedge.dart' show initializeScanWedge;
+export 'get_current_location.dart' show getCurrentLocation;

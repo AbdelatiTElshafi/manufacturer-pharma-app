@@ -78,7 +78,7 @@ class _Header2WidgetState extends State<Header2Widget> {
           width: double.infinity,
           height: 100.0,
           decoration: BoxDecoration(
-            color: Color(0x61261D66),
+            color: Color(0xFF0D214D),
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,
@@ -121,7 +121,7 @@ class _Header2WidgetState extends State<Header2Widget> {
                                 icon: Icon(
                                   Icons.arrow_back_ios,
                                   color: Colors.white,
-                                  size: 24.0,
+                                  size: 20.0,
                                 ),
                                 onPressed: () async {
                                   context.safePop();

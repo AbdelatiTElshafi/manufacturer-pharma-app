@@ -11,6 +11,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'shipment_page_model.dart';
 export 'shipment_page_model.dart';
 
@@ -60,6 +61,8 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -67,7 +70,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF5F5F5),
+        backgroundColor: Color(0xFF04113D),
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -78,19 +81,6 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
         ),
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/ChatGPT_Image_May_14,_2026,_07_04_57_PM.png',
-                  ).image,
-                ),
-              ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -175,6 +165,8 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                                 orderNumber:
                                                     _model.ordersDropDownValue,
                                               );
+                                              safeSetState(() {});
+                                              _model.loadingisvisable = false;
                                               safeSetState(() {});
                                             },
                                             height: 50.0,
@@ -338,7 +330,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                   boxShadow: [
                                     BoxShadow(
                                       blurRadius: 3.0,
-                                      color: Color(0xFF1E90FF),
+                                      color: Color(0xFF1A2E6B),
                                       offset: Offset(
                                         0.0,
                                         2.0,
@@ -347,7 +339,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                   ],
                                   borderRadius: BorderRadius.circular(12.0),
                                   border: Border.all(
-                                    color: Color(0xFF1E90FF),
+                                    color: Color(0xFF1A2E6B),
                                     width: 1.0,
                                   ),
                                 ),
@@ -568,81 +560,6 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                                       .spaceBetween,
                                               children: [
                                                 Text(
-                                                  'Batch:',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 15.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    _model.bath,
-                                                    '0000',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                            Divider(
-                                              thickness: 0.8,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
                                                   'Customer:',
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -673,82 +590,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                                                 ),
                                                 Text(
                                                   valueOrDefault<String>(
-                                                    _model.customers,
-                                                    '0000',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                            Divider(
-                                              thickness: 0.8,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  'Total Items:',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 15.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  valueOrDefault<String>(
-                                                    _model.totolitems,
+                                                    _model.customer,
                                                     '0000',
                                                   ),
                                                   style: FlutterFlowTheme.of(
@@ -809,6 +651,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                           _model.confirmShipment =
                               await ShipmentsGroup.confirmShipmentCall.call(
                             orderNo: _model.ordersDropDownValue,
+                            authToken: FFAppState().AuthToken,
                           );
 
                           if ((_model.confirmShipment?.succeeded ?? true)) {
@@ -845,7 +688,7 @@ class _ShipmentPageWidgetState extends State<ShipmentPageWidget> {
                           padding: EdgeInsets.all(8.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xA11A8267),
+                          color: Color(0x711A8267),
                           textStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     font: GoogleFonts.interTight(

@@ -76,12 +76,16 @@ class CancelShipmentPageModel
     loadingisvisable = true;
     getOrderDetailsResp = await OrdersAPIsGroup.getOrderDetailsCall.call(
       orderNO: orderNumber,
+      authToken: FFAppState().AuthToken,
     );
 
     if ((getOrderDetailsResp.succeeded ?? true)) {
       loadingisvisable = false;
       orderno = orderNumber;
       ssccState = OrdersAPIsGroup.getOrderDetailsCall.sscc(
+        (getOrderDetailsResp.jsonBody ?? ''),
+      );
+      customers = OrdersAPIsGroup.getOrderDetailsCall.customer(
         (getOrderDetailsResp.jsonBody ?? ''),
       );
     } else {

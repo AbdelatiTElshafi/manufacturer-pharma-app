@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'order_details_page_model.dart';
 export 'order_details_page_model.dart';
 
@@ -80,6 +81,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
       safeSetState(() {});
       _model.ordersDetails = await OrdersAPIsGroup.getOrderDetailsCall.call(
         orderNO: widget.orderNO,
+        authToken: FFAppState().AuthToken,
       );
 
       _model.products = OrdersAPIsGroup.getOrderDetailsCall
@@ -130,6 +132,8 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -137,7 +141,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF04113D),
         drawer: Drawer(
           elevation: 16.0,
           child: wrapWithModel(
@@ -150,19 +154,6 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
         ),
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/ChatGPT_Image_May_14,_2026,_07_04_57_PM.png',
-                  ).image,
-                ),
-              ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -198,7 +189,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                             ],
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(
-                              color: Color(0xFF1E90FF),
+                              color: Color(0xFF1A2E6B),
                               width: 1.0,
                             ),
                           ),
@@ -536,7 +527,7 @@ class _OrderDetailsPageWidgetState extends State<OrderDetailsPageWidget> {
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    6.0, 10.0, 6.0, 0.0),
+                                    0.0, 10.0, 0.0, 0.0),
                                 child: Builder(
                                   builder: (context) {
                                     final itemNo = _model.products.toList();

@@ -10,17 +10,11 @@ import 'package:flutter/material.dart';
 class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
   ///  Local state fields for this page.
 
-  String? shipmentScanedsscc;
-
   String? orderno;
 
   String? ssccState;
 
-  String? bath;
-
-  String? customers;
-
-  String? totolitems;
+  String? customer;
 
   bool loadingisvisable = false;
 
@@ -65,17 +59,16 @@ class ShipmentPageModel extends FlutterFlowModel<ShipmentPageWidget> {
     loadingisvisable = true;
     getOrderDetailsResp = await OrdersAPIsGroup.getOrderDetailsCall.call(
       orderNO: orderNumber,
+      authToken: FFAppState().AuthToken,
     );
 
     if ((getOrderDetailsResp.succeeded ?? true)) {
       loadingisvisable = false;
       orderno = orderNumber;
       ssccState = orderNumber;
-      bath = '000';
-      customers = OrdersAPIsGroup.getOrderDetailsCall.customer(
+      customer = OrdersAPIsGroup.getOrderDetailsCall.customer(
         (getOrderDetailsResp.jsonBody ?? ''),
       );
-      totolitems = '110';
     } else {
       loadingisvisable = false;
     }

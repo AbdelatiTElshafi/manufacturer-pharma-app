@@ -177,6 +177,7 @@ class _OrderCardWidgetState extends State<OrderCardWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ].divide(SizedBox(width: 3.0)),
                           ),

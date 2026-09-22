@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'scan_product_page_model.dart';
 export 'scan_product_page_model.dart';
 
@@ -85,6 +86,7 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
         orderNo: widget.orderno,
         gtin: widget.gtin,
         sscc: '0',
+        authToken: FFAppState().AuthToken,
       );
 
       if ((_model.productdetails?.succeeded ?? true)) {
@@ -127,6 +129,8 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -134,22 +138,9 @@ class _ScanProductPageWidgetState extends State<ScanProductPageWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF04113D),
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/ChatGPT_Image_May_14,_2026,_07_04_57_PM.png',
-                  ).image,
-                ),
-              ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,

@@ -78,7 +78,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           width: double.infinity,
           height: 100.0,
           decoration: BoxDecoration(
-            color: Color(0x61261D66),
+            color: Color(0xFF0D214D),
             boxShadow: [
               BoxShadow(
                 blurRadius: 6.0,

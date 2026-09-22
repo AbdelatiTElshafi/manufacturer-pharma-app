@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'intropage_widget.dart' show IntropageWidget;
+import 'main_header_widget.dart' show MainHeaderWidget;
 import 'package:flutter/material.dart';
 
-class IntropageModel extends FlutterFlowModel<IntropageWidget> {
+class MainHeaderModel extends FlutterFlowModel<MainHeaderWidget> {
   @override
   void initState(BuildContext context) {}
 
