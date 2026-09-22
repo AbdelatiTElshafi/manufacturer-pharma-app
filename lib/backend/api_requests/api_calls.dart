@@ -107,7 +107,7 @@ class UpdateSerialStatusCall {
 /// Start UserAccessMangment Group Code
 
 class UserAccessMangmentGroup {
-  static String getBaseUrl() => 'https://staging.gxptrace.net/api/v1/';
+  static String getBaseUrl() => 'https://staging.gxptrace.net/api/v1';
   static Map<String, String> headers = {
     'Content-Type': 'application/json',
   };
@@ -170,7 +170,7 @@ class UserLoginCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UserLogin',
-      apiUrl: '${baseUrl}UserLogin/',
+      apiUrl: '${baseUrl}/UserLogin',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
