@@ -585,7 +585,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             safeSetState(() {});
                                           } else {
                                             _model.message =
-                                                'Failed To Connect to the Server';
+                                                '${_model.message}${(_model.userLoginResp?.statusCode ?? 200).toString()}';
                                             safeSetState(() {});
                                           }
 

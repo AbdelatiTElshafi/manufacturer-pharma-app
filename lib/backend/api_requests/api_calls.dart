@@ -125,7 +125,6 @@ class GetAllUsersCall {
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true',
       },
       params: {},
       returnBody: true,
