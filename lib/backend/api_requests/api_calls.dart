@@ -196,6 +196,10 @@ class UserLoginCall {
         response,
         r'''$.data.token''',
       ));
+  String? message(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.message''',
+      ));
 }
 
 /// End UserAccessMangment Group Code

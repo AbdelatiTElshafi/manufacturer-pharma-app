@@ -19,6 +19,8 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   void updateUsersAtIndex(int index, Function(String) updateFn) =>
       users[index] = updateFn(users[index]);
 
+  String? message;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (GetAllUsers)] action in Loginpage widget.
