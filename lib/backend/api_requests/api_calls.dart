@@ -170,7 +170,7 @@ class UserLoginCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UserLogin',
-      apiUrl: '${baseUrl}/UserLogin/',
+      apiUrl: '${baseUrl}UserLogin/',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
