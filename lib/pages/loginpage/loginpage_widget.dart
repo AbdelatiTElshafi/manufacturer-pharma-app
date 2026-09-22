@@ -581,7 +581,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                                     .message(
                                               (_model.userLoginResp?.jsonBody ??
                                                   ''),
-                                            );
+                                            )!;
                                             safeSetState(() {});
                                           } else {
                                             _model.message =

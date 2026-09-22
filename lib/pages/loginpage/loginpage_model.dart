@@ -19,7 +19,7 @@ class LoginpageModel extends FlutterFlowModel<LoginpageWidget> {
   void updateUsersAtIndex(int index, Function(String) updateFn) =>
       users[index] = updateFn(users[index]);
 
-  String? message;
+  String message = 'Failed To Connect to the Server';
 
   ///  State fields for stateful widgets in this page.
 
