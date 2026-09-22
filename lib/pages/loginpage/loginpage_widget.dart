@@ -589,7 +589,7 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                             safeSetState(() {});
                                           }
 
-                                          _model.servererror = false;
+                                          _model.servererror = true;
                                           safeSetState(() {});
                                           if (_model.passwordTextController
                                                   .text ==
