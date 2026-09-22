@@ -571,6 +571,27 @@ class _LoginpageWidgetState extends State<LoginpageWidget> {
                                           )!;
                                           safeSetState(() {});
                                         } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                (_model.userLoginResp
+                                                        ?.getHeader(
+                                                            'Location') ??
+                                                    ''),
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
                                           if ((_model.userLoginResp
                                                       ?.statusCode ??
                                                   200) ==
