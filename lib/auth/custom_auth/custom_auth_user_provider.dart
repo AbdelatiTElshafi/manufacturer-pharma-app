@@ -2,17 +2,18 @@ import 'package:rxdart/rxdart.dart';
 
 import 'custom_auth_manager.dart';
 
-class MAHNewServerAuthUser {
-  MAHNewServerAuthUser({required this.loggedIn, this.uid});
+class ManufacturerPharmaAppAuthUser {
+  ManufacturerPharmaAppAuthUser({required this.loggedIn, this.uid});
 
   bool loggedIn;
   String? uid;
 }
 
 /// Generates a stream of the authenticated user.
-BehaviorSubject<MAHNewServerAuthUser> mAHNewServerAuthUserSubject =
-    BehaviorSubject.seeded(MAHNewServerAuthUser(loggedIn: false));
-Stream<MAHNewServerAuthUser> mAHNewServerAuthUserStream() =>
-    mAHNewServerAuthUserSubject
+BehaviorSubject<ManufacturerPharmaAppAuthUser>
+    manufacturerPharmaAppAuthUserSubject =
+    BehaviorSubject.seeded(ManufacturerPharmaAppAuthUser(loggedIn: false));
+Stream<ManufacturerPharmaAppAuthUser> manufacturerPharmaAppAuthUserStream() =>
+    manufacturerPharmaAppAuthUserSubject
         .asBroadcastStream()
         .map((user) => currentUser = user);

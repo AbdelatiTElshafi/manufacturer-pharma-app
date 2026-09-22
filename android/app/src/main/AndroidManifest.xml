@@ -46,7 +46,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="mahnewserver" android:host="mahnewserver.com" />
+                <data android:scheme="manufacturerpharmaapp" android:host="manufacturerpharmaapp.com" />
             </intent-filter>
 
         </activity>

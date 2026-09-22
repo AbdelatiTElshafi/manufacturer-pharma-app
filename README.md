@@ -1,4 +1,4 @@
-# MAH New Server
+# Manufacturer Pharma App
 
 A new Flutter project.
 

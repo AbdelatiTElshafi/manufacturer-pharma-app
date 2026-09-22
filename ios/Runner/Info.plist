@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>MAH New Server</string>
+	<string>Manufacturer Pharma App</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -26,10 +26,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>mahnewserver.com</string>
+        <string>manufacturerpharmaapp.com</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>mahnewserver</string>
+        <string>manufacturerpharmaapp</string>
         </array>
         </dict>
     </array>

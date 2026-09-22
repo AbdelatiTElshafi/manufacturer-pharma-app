@@ -47,8 +47,8 @@ class CustomAuthManager {
     uid = null;
 
     // Update the current user.
-    mAHNewServerAuthUserSubject.add(
-      MAHNewServerAuthUser(loggedIn: false),
+    manufacturerPharmaAppAuthUserSubject.add(
+      ManufacturerPharmaAppAuthUser(loggedIn: false),
     );
     // Clearing the stored values is best effort from here: the marker has
     // already made the session unusable, so a failure only leaves inert data
@@ -56,7 +56,7 @@ class CustomAuthManager {
     await _clearPersistedSession();
   }
 
-  Future<MAHNewServerAuthUser?> signIn({
+  Future<ManufacturerPharmaAppAuthUser?> signIn({
     String? authenticationToken,
     String? refreshToken,
     DateTime? tokenExpiration,
@@ -88,7 +88,7 @@ class CustomAuthManager {
     );
   }
 
-  Future<MAHNewServerAuthUser?> _updateCurrentUser({
+  Future<ManufacturerPharmaAppAuthUser?> _updateCurrentUser({
     String? authenticationToken,
     String? refreshToken,
     DateTime? tokenExpiration,
@@ -100,11 +100,11 @@ class CustomAuthManager {
     this.uid = authUid;
 
     // Update the current user stream.
-    final updatedUser = MAHNewServerAuthUser(
+    final updatedUser = ManufacturerPharmaAppAuthUser(
       loggedIn: true,
       uid: authUid,
     );
-    mAHNewServerAuthUserSubject.add(updatedUser);
+    manufacturerPharmaAppAuthUserSubject.add(updatedUser);
     await persistAuthData();
     return updatedUser;
   }
@@ -127,8 +127,8 @@ class CustomAuthManager {
         // the stored session. Restore nothing, and retry the cleanup, which
         // removes the marker once it succeeds.
         await _clearPersistedSession();
-        mAHNewServerAuthUserSubject.add(
-          MAHNewServerAuthUser(loggedIn: false),
+        manufacturerPharmaAppAuthUserSubject.add(
+          ManufacturerPharmaAppAuthUser(loggedIn: false),
         );
         return;
       }
@@ -151,11 +151,11 @@ class CustomAuthManager {
     final authTokenExists = authenticationToken != null;
     final tokenExpired =
         tokenExpiration != null && tokenExpiration!.isBefore(DateTime.now());
-    final updatedUser = MAHNewServerAuthUser(
+    final updatedUser = ManufacturerPharmaAppAuthUser(
       loggedIn: authTokenExists && !tokenExpired,
       uid: uid,
     );
-    mAHNewServerAuthUserSubject.add(updatedUser);
+    manufacturerPharmaAppAuthUserSubject.add(updatedUser);
   }
 
   // Migrates auth session data that was previously persisted in plaintext
@@ -369,5 +369,5 @@ class CustomAuthManager {
   }
 }
 
-MAHNewServerAuthUser? currentUser;
+ManufacturerPharmaAppAuthUser? currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;

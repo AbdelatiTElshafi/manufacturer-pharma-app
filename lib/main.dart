@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       _router.routerDelegate.currentConfiguration.matches
           .map((e) => getRoute(e))
           .toList();
-  late Stream<MAHNewServerAuthUser> userStream;
+  late Stream<ManufacturerPharmaAppAuthUser> userStream;
 
   @override
   void initState() {
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = mAHNewServerAuthUserStream()
+    userStream = manufacturerPharmaAppAuthUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'MAH New Server',
+      title: 'Manufacturer Pharma App',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
